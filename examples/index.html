@@ -1,0 +1,74 @@
+<html>
+
+<head>
+  <title>Amalthea Example</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/amalthea.css">
+</head>
+
+<body>
+  <div id="body">
+    <div class="container">
+      <section class="main">
+        <div class="content">
+          <div data-amalthea-exercise data-lang="python2" data-executable>
+            <pre class="code-hidden">
+              <div>程序说明</div>
+              <code data-type="title">Python输出42</code>
+            </pre>
+            <pre>
+              <div>示例代码</div>
+              <code data-type="sample-code">
+                reduce(lambda x, y: x ^ ord(y), 'Life, the universe and everything', 6 * 9)
+              </code>
+            </pre>
+          </div>
+        </div>
+      </section>
+      <section class="main">
+        <div class="content">
+          <div data-amalthea-exercise data-lang="javascript" data-executable>
+            <pre class="code-hidden">
+              <div>程序说明</div>
+              <code data-type="title">JavaScript输出42</code>
+            </pre>
+            <pre>
+              <div>示例代码</div>
+              <code data-type="sample-code">
+/////////////////////////
+
+      ++[       ++[++
+    [ ++[      []    ][
+  +[  ]]]     [+      []
+ ]]   [+[           ]]
+ ][+[]]+[++[      ++
+      [[]       ][
+      +[]     ]][+[]]]+[]
+
+/////////////////////////
+              </code>
+            </pre>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="../dist/amalthea.bundle.js"></script>
+  <script>
+    const amalthea = new Amalthea({
+      selector: 'div[data-executable]',
+      not_executable_selector: 'div[data-not-executable]',
+      read_only_selector: 'div[data-read-only]',
+      url: 'https://amalthea.jizhi.im:8000',
+      tmpnb_mode: true,
+      debug: true,
+      error_addendum: false,
+      image_name: 'jupyter/minimal-notebook',
+      container_selector: 'body'
+    });
+
+  </script>
+</body>
+
+</html>

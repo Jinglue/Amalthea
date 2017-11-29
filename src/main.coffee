@@ -401,8 +401,8 @@ define [
           cell.code_mirror.setOption("readOnly", true)
           @typing[i] = true
           setTimeout(()=>
-              @autorun cell, i, 0
-            , 2000)
+              @autorun i
+            , 600)
 
       # We're not using the real notebook
       @notebook_el.hide()
@@ -534,15 +534,17 @@ define [
             else if msg.content.data['text/html']
               $(".amalthea_output[data-cell-id=#{id}]").show().children().append(msg.content.data['text/html'])
 
-    autorun: (cell, id, start) =>
+    autorun: (id) =>
       if @typing[id] isnt true
         return
+      cell = @cells[id]
+      start = cell.get_text().length
       str = cell.get_samplecode()
       if start < str.length
-        cell.set_text str.slice(0, start+1)
-        start += 1
+        start += parseInt(str.length / 16)
+        cell.set_text str.slice(0, start)
         setTimeout(()=>
-            @autorun cell, id, start
+            @autorun id
           , Math.random()*100+100)
       else if start > 0
         @typing[id] = false

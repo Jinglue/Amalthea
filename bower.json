@@ -1,0 +1,10 @@
+{
+  "name": "jupyter-notebook-deps",
+  "version": "0.0.1",
+  "dependencies": {
+    "ansi_up": "^2.0.2"
+  },
+  "ignore": [
+    "examples/"
+  ]
+}

@@ -5,19 +5,15 @@
 	"repository": "https://github.com/Jinglue/Amalthea.git",
 	"author": "Apollo <zhaoyang@jizhi.im>",
 	"license": "MIT",
-	"size-limit": [
-		{
-			"path": "static/almond.js",
-			"limit": "500 KB"
-		}
-	],
 	"scripts": {
-		"size": "size-limit",
 		"test": "jest && eslint .",
-		"build": "coffee -cbm src/main.coffee && r.js -o src/build.js baseUrl=./src name=almond include=main out=dist/amalthea.bundle.js && gzip -r -f -k dist/amalthea.bundle.js"
+		"hashmark": "hashmark dist/*.js -rsl 7 'dist/amalthea.{hash}.{name}.js'",
+		"build": "rm -rf dist && coffee -cbm src/main.coffee && r.js -o src/build.js baseUrl=./src name=almond include=main out=dist/bundle.js && hashmark dist/*.js -rsl 7 'dist/amalthea.{hash}.{name}.js' && gzip -r -f -k dist/*.js"
 	},
-	"devDependencies": {
-		"size-limit": "^0.11.6"
-	},
-	"dependencies": {}
+	"devDependencies": {},
+	"dependencies": {
+		"coffee": "^4.1.0",
+		"hashmark": "^5.0.0",
+		"r.js": "^1.0.3"
+	}
 }

@@ -380,8 +380,8 @@ define(['base/js/namespace', 'jquery', 'components/ansi_up/ansi_up', 'components
             cell.code_mirror.setOption("readOnly", true);
             _this.typing[i] = true;
             return setTimeout(function() {
-              return _this.autorun(cell, i, 0);
-            }, 2000);
+              return _this.autorun(i);
+            }, 600);
           }
         };
       })(this));
@@ -547,18 +547,20 @@ define(['base/js/namespace', 'jquery', 'components/ansi_up/ansi_up', 'components
       }
     };
 
-    Amalthea.prototype.autorun = function(cell, id, start) {
-      var str;
+    Amalthea.prototype.autorun = function(id) {
+      var cell, start, str;
       if (this.typing[id] !== true) {
         return;
       }
+      cell = this.cells[id];
+      start = cell.get_text().length;
       str = cell.get_samplecode();
       if (start < str.length) {
-        cell.set_text(str.slice(0, start + 1));
-        start += 1;
+        start += parseInt(str.length / 16);
+        cell.set_text(str.slice(0, start));
         return setTimeout((function(_this) {
           return function() {
-            return _this.autorun(cell, id, start);
+            return _this.autorun(id);
           };
         })(this), Math.random() * 100 + 100);
       } else if (start > 0) {

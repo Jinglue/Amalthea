@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "node"
+  - "8"
+
+before_install:
+    # nothing
+install:
+    - npm install -g bower
+    - npm install
+    - bower install
+script:
+    - npm run build

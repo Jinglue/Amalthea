@@ -6,9 +6,10 @@
 	"author": "Apollo <zhaoyang@jizhi.im>",
 	"license": "MIT",
 	"scripts": {
+		"preinstall": "bower install",
 		"test": "jest && eslint .",
-		"hashmark": "hashmark dist/*.js -rsl 7 'dist/amalthea.{hash}.{name}.js'",
-		"build": "rm -rf dist && coffee -cbm src/main.coffee && r.js -o src/build.js baseUrl=./src name=almond include=main out=dist/bundle.js && hashmark dist/*.js -rsl 7 'dist/amalthea.{hash}.{name}.js' && gzip -r -f -k dist/*.js"
+		"hashmark": "hashmark dist/*.js -rsl 7 'dist/{name}.{hash}.bundle.js'",
+		"build": "rm -rf dist && coffee -cbm src/main.coffee && r.js -o src/build.js baseUrl=./src name=almond include=main out=dist/amalthea.js && hashmark dist/*.js -sl 7 'dist/{name}.{hash}.bundle.js' && gzip -r -f -k dist/*.js"
 	},
 	"devDependencies": {},
 	"dependencies": {

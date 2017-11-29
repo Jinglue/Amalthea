@@ -1,8 +1,8 @@
 define [
   'base/js/namespace'
   'jquery'
-  'components/ansi_up/ansi_up'
-  'components/es6-promise/promise.min'
+  'ansi_up'
+  'promise'
   'amalthea/dotimeout'
   'notebook/js/notebook'
   'contents'

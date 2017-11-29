@@ -2,7 +2,7 @@
 var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-define(['base/js/namespace', 'jquery', 'components/ansi_up/ansi_up', 'components/es6-promise/promise.min', 'amalthea/dotimeout', 'notebook/js/notebook', 'contents', 'base/js/events', 'services/kernels/kernel', 'codemirror/lib/codemirror', 'codemirror/mode/python/python', 'codemirror/mode/r/r', 'codemirror/mode/julia/julia', 'codemirror/mode/htmlmixed/htmlmixed', 'codemirror/mode/css/css', 'codemirror/mode/javascript/javascript', 'codemirror/mode/shell/shell'], function(IPython, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel, CodeMirror) {
+define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'amalthea/dotimeout', 'notebook/js/notebook', 'contents', 'base/js/events', 'services/kernels/kernel', 'codemirror/lib/codemirror', 'codemirror/mode/python/python', 'codemirror/mode/r/r', 'codemirror/mode/julia/julia', 'codemirror/mode/htmlmixed/htmlmixed', 'codemirror/mode/css/css', 'codemirror/mode/javascript/javascript', 'codemirror/mode/shell/shell'], function(IPython, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel, CodeMirror) {
   var Amalthea;
   Amalthea = (function() {
     Amalthea.prototype.default_options = {

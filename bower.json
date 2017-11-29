@@ -2,7 +2,12 @@
   "name": "jupyter-notebook-deps",
   "version": "0.0.1",
   "dependencies": {
-    "ansi_up": "^2.0.2"
+    "ansi_up": "^2.0.2",
+    "codemirror": "^5.32.0",
+    "es6-promise": "^4.1.1",
+    "jquery": "^3.2.1",
+    "requirejs": "^2.3.5",
+    "underscore": "^1.8.3"
   },
   "ignore": [
     "examples/"

@@ -13,8 +13,8 @@
 	},
 	"devDependencies": {},
 	"dependencies": {
-		"coffee": "^4.1.0",
+		"coffee-script": "^1.12.7",
 		"hashmark": "^5.0.0",
-		"r.js": "^1.0.3"
+		"requirejs": "^2.3.5"
 	}
 }

@@ -2,7 +2,7 @@
 var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'amalthea/dotimeout', 'notebook/js/notebook', 'contents', 'base/js/events', 'services/kernels/kernel', 'codemirror/lib/codemirror', 'codemirror/mode/python/python', 'codemirror/mode/r/r', 'codemirror/mode/julia/julia', 'codemirror/mode/htmlmixed/htmlmixed', 'codemirror/mode/css/css', 'codemirror/mode/javascript/javascript', 'codemirror/mode/shell/shell'], function(IPython, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel, CodeMirror) {
+define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout', 'notebook/js/notebook', 'vendors/contents', 'base/js/events', 'services/kernels/kernel', 'codemirror/lib/codemirror', 'codemirror/mode/python/python', 'codemirror/mode/r/r', 'codemirror/mode/julia/julia', 'codemirror/mode/htmlmixed/htmlmixed', 'codemirror/mode/css/css', 'codemirror/mode/javascript/javascript', 'codemirror/mode/shell/shell'], function(IPython, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel, CodeMirror) {
   var Amalthea;
   Amalthea = (function() {
     Amalthea.prototype.default_options = {
@@ -635,7 +635,7 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'amalthea/dotimeout
       } else if (cell && cell.get_hint() && cell.showSolution) {
         result += "<button data-action='showhint' class='solution'>隐藏答案</button>";
       }
-      result += '<a href="#" target="_blank"><div class="poweredby-amalthea"></div></a>';
+      result += '<a href="https://amalthea.ai" target="_blank"><div class="poweredby-amalthea"></div></a>';
       return result;
     };
 
@@ -813,7 +813,7 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'amalthea/dotimeout
       var event;
       $(".amalthea_message[data-cell-id=" + id + "]").hide();
       if (b) {
-        $(".amalthea_message[data-cell-id=" + id + "]").text("Excited!").removeClass("message_wrong").addClass("message_right");
+        $(".amalthea_message[data-cell-id=" + id + "]").text("答案通过！").removeClass("message_wrong").addClass("message_right");
         if (this.handler) {
           event = new CustomEvent("amalthea.checked", {
             'detail': {
@@ -824,7 +824,7 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'amalthea/dotimeout
           this.handler.node.dispatchEvent(event);
         }
       } else {
-        $(".amalthea_message[data-cell-id=" + id + "]").text("Naïve!").removeClass("message_right").addClass("message_wrong");
+        $(".amalthea_message[data-cell-id=" + id + "]").text("答案未通过！").removeClass("message_right").addClass("message_wrong");
         if (this.handler) {
           event = new CustomEvent("amalthea.checked", {
             'detail': {

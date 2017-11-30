@@ -3,9 +3,9 @@ define [
   'jquery'
   'ansi_up'
   'promise'
-  'amalthea/dotimeout'
+  'vendors/dotimeout'
   'notebook/js/notebook'
-  'contents'
+  'vendors/contents'
   'base/js/events'
   'services/kernels/kernel'
   'codemirror/lib/codemirror'
@@ -594,7 +594,7 @@ define [
         result+="<button data-action='showhint' class='solution'>显示答案</button>"
       else if cell && cell.get_hint() && cell.showSolution
         result+="<button data-action='showhint' class='solution'>隐藏答案</button>"
-      result+='<a href="#" target="_blank"><div class="poweredby-amalthea"></div></a>'
+      result+='<a href="https://amalthea.ai" target="_blank"><div class="poweredby-amalthea"></div></a>'
       result
       
     controls_html_quiz: (cell=undefined, cell_id=0, state=@idle_state, html=false)=>
@@ -720,7 +720,7 @@ define [
       $(".amalthea_message[data-cell-id=#{id}]").hide()
       if b 
         $(".amalthea_message[data-cell-id=#{id}]")
-          .text "Excited!"
+          .text "答案通过！"
           .removeClass "message_wrong"
           .addClass "message_right"
           if @handler
@@ -728,7 +728,7 @@ define [
             @handler.node.dispatchEvent event
       else
         $(".amalthea_message[data-cell-id=#{id}]")
-          .text "Naïve!"
+          .text "答案未通过！"
           .removeClass "message_right"
           .addClass "message_wrong"
           if @handler

@@ -1,6 +1,6 @@
 {
 	"name": "amalthea",
-	"version": "1.0.0",
+	"version": "1.7.0",
 	"main": "src/main.js",
 	"repository": "https://github.com/Jinglue/Amalthea.git",
 	"author": "Apollo <zhaoyang@jizhi.im>",

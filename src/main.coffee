@@ -27,19 +27,13 @@ define [
       selector: 'pre[data-executable]'
       # the url of either a tmnb server or a notebook server
       # (default url assumes user is running tmpnb via boot2docker)
-      url: '//192.168.59.103:8000/'
+      url: 'https://amalthea.jizhi.im:8000/'
       # is the url for tmpnb or for a notebook
       tmpnb_mode: true
       # the kernel name to use, must exist on notebook server
       kernel_name: "python2"
       # set to false to prevent kernel_controls from being added
       append_kernel_controls_to: false
-      # Automatically inject basic default css we need, no highlighting
-      inject_css: false
-      # Automatically load other necessary css (jquery ui)
-      load_css: false
-      # Automatically load mathjax js
-      load_mathjax: false
       # Default keyboard shortcut for focusing next cell, shift+ this keycode, default (32) is spacebar
       # Set to false to disable
       next_cell_shortcut: 32

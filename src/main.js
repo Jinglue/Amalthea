@@ -4,16 +4,14 @@ var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); 
 
 define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout', 'notebook/js/notebook', 'vendors/contents', 'base/js/events', 'services/kernels/kernel', 'codemirror/lib/codemirror', 'codemirror/mode/python/python', 'codemirror/mode/r/r', 'codemirror/mode/julia/julia', 'codemirror/mode/htmlmixed/htmlmixed', 'codemirror/mode/css/css', 'codemirror/mode/javascript/javascript', 'codemirror/mode/shell/shell'], function(IPython, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel, CodeMirror) {
   var Amalthea;
+  promise.polyfill();
   Amalthea = (function() {
     Amalthea.prototype.default_options = {
       selector: 'pre[data-executable]',
-      url: '//192.168.59.103:8000/',
+      url: 'https://amalthea.jizhi.im:8000/',
       tmpnb_mode: true,
       kernel_name: "python2",
       append_kernel_controls_to: false,
-      inject_css: false,
-      load_css: false,
-      load_mathjax: false,
       next_cell_shortcut: 32,
       run_cell_shortcut: 13,
       not_executable_selector: "pre[data-not-executable]",
@@ -1056,19 +1054,6 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
         a[j] = x;
         i--;
       }
-    };
-
-    Amalthea.prototype.fix_cm_indent = function(cell) {
-      var basePadding, charWidth;
-      charWidth = cell.code_mirror.defaultCharWidth();
-      basePadding = 4;
-      cell.code_mirror.on("renderLine", function(cm, line, elt) {
-        var offset;
-        offset = CodeMirror.countColumn(line.text, null, cm.getOption("tabSize")) * charWidth;
-        elt.style.textIndent = "-" + offset + "px";
-        return elt.style.paddingLeft = (basePadding + offset) + "px";
-      });
-      return cell.code_mirror.refresh();
     };
 
     Amalthea.prototype.get_param_from_qs = function(name) {

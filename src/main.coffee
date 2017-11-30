@@ -19,7 +19,7 @@ define [
 
 ], (IPython, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel, CodeMirror) ->
 
-  # promise.polyfill()
+  promise.polyfill()
 
   class Amalthea
     default_options:
@@ -899,17 +899,7 @@ define [
         a[j] = x
         i--
       return
-    
-    fix_cm_indent:(cell)->
-      charWidth = cell.code_mirror.defaultCharWidth()
-      basePadding = 4;
-      cell.code_mirror.on "renderLine", (cm, line, elt) ->
-        offset = CodeMirror.countColumn(line.text, null, cm.getOption("tabSize")) * charWidth
-        elt.style.textIndent = "-" + offset + "px"
-        elt.style.paddingLeft = (basePadding + offset) + "px";
-      cell.code_mirror.refresh()
-
-    # really only used for debugging/dev @options, not for use in prod
+	
     get_param_from_qs: (name)->
         name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]')
         regex = new RegExp('[\\?&]' + name + '=([^&#]*)')
@@ -928,7 +918,6 @@ define [
       if @has_kernel_connected then data['has_kernel_connected'] = true
       $(window.document).trigger 'amalthea_tracking_event', data
 
-  # So people can access it
   window.Amalthea = Amalthea
 
   return {Amalthea: Amalthea}

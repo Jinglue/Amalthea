@@ -1,4 +1,3 @@
-*.rb linguist-language=CoffeeScript
 src/vendors/* linguist-vendored
 dist/* linguist-generated=true
 src/main.js linguist-generated=true

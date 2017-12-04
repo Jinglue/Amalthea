@@ -1,7 +1,7 @@
 {
-  "name": "jupyter-notebook-deps",
-  "version": "0.0.1",
-  "dependencies": {
+  "name": "amalthea",
+  "version": "1.0.0",
+  "devDependencies": {
     "ansi_up": "^2.0.2",
     "codemirror": "^5.32.0",
     "es6-promise": "^4.1.1",

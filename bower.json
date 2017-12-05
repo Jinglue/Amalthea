@@ -1,6 +1,6 @@
 {
   "name": "amalthea",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "devDependencies": {
     "ansi_up": "^2.0.2",
     "codemirror": "^5.32.0",

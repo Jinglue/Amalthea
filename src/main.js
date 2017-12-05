@@ -1100,7 +1100,6 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
     return Amalthea;
 
   })();
-  window.Amalthea = Amalthea;
   return {
     Amalthea: Amalthea
   };

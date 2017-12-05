@@ -97,7 +97,6 @@ define(function (require) {
         this.trusted = null;
         this._fully_loaded = false;
 
-        // added by zach for thebe xxx
         this.codemirror_theme_name = options.codemirror_theme_name;
         // prevent assign to miss-typed properties.
         Object.seal(this);

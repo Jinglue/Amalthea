@@ -917,7 +917,7 @@ define [
       if @server_error then data['server_error'] = true
       if @has_kernel_connected then data['has_kernel_connected'] = true
       $(window.document).trigger 'amalthea_tracking_event', data
-
-  window.Amalthea = Amalthea
+  
+  # window.Amalthea = Amalthea
 
   return {Amalthea: Amalthea}

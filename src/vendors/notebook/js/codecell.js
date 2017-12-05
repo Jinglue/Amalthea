@@ -183,7 +183,6 @@ define([
             notebook: this.notebook});
         inner_cell.append(this.celltoolbar.element);
         var input_area = $('<div/>').addClass('input_area');
-        // Added/changed by Zach for Thebe XXX
         var cm_config = this._options.cm_config;
         cm_config.theme = this.notebook.codemirror_theme_name;
         this.code_mirror = new CodeMirror(input_area.get(0), cm_config );

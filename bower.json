@@ -10,6 +10,7 @@
     "underscore": "^1.8.3"
   },
   "ignore": [
-    "examples/"
+    "examples/",
+    "docs/"
   ]
 }

@@ -11,7 +11,7 @@
 
 ## Attention
 
-By now, Amalthea is still under development, thus we don't encourage you to use it in production. But you can have it builded and tested, and send us issues if you find any one. We are now working with the document and user guide, you can keep watching this project to receive the latest information.
+By now, Amalthea is still under development, thus we don't encourage you to use it in production. But you can have it builded and tested, and send us issues if you find any. We are now working with the document and user guide, you can keep watching this project to receive the latest information.
 
 ## What is Amalthea
 

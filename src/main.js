@@ -2,7 +2,7 @@
 var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout', 'notebook/js/notebook', 'vendors/contents', 'base/js/events', 'services/kernels/kernel', 'codemirror/lib/codemirror', 'codemirror/mode/python/python', 'codemirror/mode/r/r', 'codemirror/mode/julia/julia', 'codemirror/mode/htmlmixed/htmlmixed', 'codemirror/mode/css/css', 'codemirror/mode/javascript/javascript', 'codemirror/mode/shell/shell'], function(IPython, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel, CodeMirror) {
+define(['base/js/namespace', 'amalthea/locale', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout', 'notebook/js/notebook', 'vendors/contents', 'base/js/events', 'services/kernels/kernel', 'codemirror/lib/codemirror', 'codemirror/mode/python/python', 'codemirror/mode/r/r', 'codemirror/mode/julia/julia', 'codemirror/mode/htmlmixed/htmlmixed', 'codemirror/mode/css/css', 'codemirror/mode/javascript/javascript', 'codemirror/mode/shell/shell'], function(IPython, locale, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel, CodeMirror) {
   var Amalthea;
   promise.polyfill();
   Amalthea = (function() {
@@ -61,20 +61,20 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
 
     Amalthea.prototype.setup_constants = function() {
       this.error_states = [this.disc_state, this.full_state, this.cant_state, this.gaveup_state];
-      this.ui[this.start_state] = '启动中';
-      this.ui[this.idle_state] = '运行';
-      this.ui[this.busy_state] = '运行中<svg version="1.1" class="amalthea-running" xmlns="http://www.w3.org/2000/svg" viewBox="-60 -60 98 42"><path class="cls-0" d="M0.2-32.9c19.4,0,36.3,7,45.1,17.4c-8.7-24.9-35.9-38-60.8-29.3C-29.3-40-40.1-29.2-44.9-15.5 C-36.1-25.9-19.2-32.9,0.2-32.9"/><path class="cls-1" d="M42.2-52c0.1,4.9-3.7,8.9-8.5,9.1c-4.9,0.1-8.9-3.7-9.1-8.5c-0.1-4.8,3.6-8.8,8.4-9.1c4.9-0.2,9,3.5,9.2,8.4 C42.2-52.1,42.2-52.1,42.2-52"/><path class="cls-2" d="M-41.1-37c-3.6,0.2-6.6-2.6-6.8-6.1s2.6-6.6,6.1-6.8c3.6-0.2,6.6,2.6,6.8,6.1c0,0,0,0,0,0v0.1 C-34.8-40.2-37.6-37.2-41.1-37C-41.1-37-41.1-37-41.1-37L-41.1-37L-41.1-37z"/><path class="cls-3" d="M-2.2-65.3C-2-59-6.9-53.7-13.3-53.5s-11.6-4.7-11.8-11.1c-0.2-6.3,4.7-11.5,10.9-11.8 c6.3-0.3,11.7,4.6,11.9,10.9C-2.2-65.4-2.2-65.3-2.2-65.3"/></svg>';
-      this.ui[this.ran_state] = '再次运行';
-      this.ui[this.user_error] = '再次运行';
-      this.ui[this.interrupt_state] = '连接中断';
-      this.ui[this.full_state] = '服务器忙';
-      this.ui[this.cant_state] = '连接失败';
-      this.ui[this.disc_state] = '重连中';
-      this.ui[this.gaveup_state] = '重新运行';
+      this.ui[this.start_state] = locale['STARTING'];
+      this.ui[this.idle_state] = locale['RUN'];
+      this.ui[this.busy_state] = locale['RUNNING'] + '<svg version="1.1" class="amalthea-running" xmlns="http://www.w3.org/2000/svg" viewBox="-60 -60 98 42"><path class="cls-0" d="M0.2-32.9c19.4,0,36.3,7,45.1,17.4c-8.7-24.9-35.9-38-60.8-29.3C-29.3-40-40.1-29.2-44.9-15.5 C-36.1-25.9-19.2-32.9,0.2-32.9"/><path class="cls-1" d="M42.2-52c0.1,4.9-3.7,8.9-8.5,9.1c-4.9,0.1-8.9-3.7-9.1-8.5c-0.1-4.8,3.6-8.8,8.4-9.1c4.9-0.2,9,3.5,9.2,8.4 C42.2-52.1,42.2-52.1,42.2-52"/><path class="cls-2" d="M-41.1-37c-3.6,0.2-6.6-2.6-6.8-6.1s2.6-6.6,6.1-6.8c3.6-0.2,6.6,2.6,6.8,6.1c0,0,0,0,0,0v0.1 C-34.8-40.2-37.6-37.2-41.1-37C-41.1-37-41.1-37-41.1-37L-41.1-37L-41.1-37z"/><path class="cls-3" d="M-2.2-65.3C-2-59-6.9-53.7-13.3-53.5s-11.6-4.7-11.8-11.1c-0.2-6.3,4.7-11.5,10.9-11.8 c6.3-0.3,11.7,4.6,11.9,10.9C-2.2-65.4-2.2-65.3-2.2-65.3"/></svg>';
+      this.ui[this.ran_state] = locale['REPEAT'];
+      this.ui[this.user_error] = locale['REPEAT'];
+      this.ui[this.interrupt_state] = locale['NETINTER'];
+      this.ui[this.full_state] = locale['BUSY'];
+      this.ui[this.cant_state] = locale['CONNERR'];
+      this.ui[this.disc_state] = locale['RECONN'];
+      this.ui[this.gaveup_state] = locale['RUNAGAIN'];
       if (this.options.error_addendum === false) {
         return this.ui['error_addendum'] = "";
       } else if (this.options.error_addendum === true) {
-        return this.ui['error_addendum'] = "<button data-action='run-above'>全部运行</button> <div class='amalthea-message'>看上去出现了一些错误，您可能需要运行之前的所有程序。</div>";
+        return this.ui['error_addendum'] = "<button data-action='run-above'>" + locale['RUNTOTAL'] + "</button> <div class='amalthea-message'>" + locale['ERRORINFO'] + "</div>";
       } else {
         return this.ui['error_addendum'] = this.options.error_addendum;
       }
@@ -235,7 +235,7 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
             cell = _this.notebook.insert_cell_at_bottom('code');
             title = $(el).find('div[data-type="title"]').text().trim();
             if (!title) {
-              title = '测试题目';
+              title = locale['TITLE'];
             }
             cell.set_title(title);
             cell.set_solution($(el).find('div[data-type="solution"]').html());
@@ -284,7 +284,7 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
             wrap = $("<div class='amalthea_wrap' data-cell-id='" + i + "'></div>");
             if (title) {
               titlebox = $("<div class='amalthea_title' data-cell-id='" + i + "'></div>");
-              titlebox.append("<div class='amalthea_title_controls' data-cell-id='" + i + "'><span class='code-type'>" + langStr.title + "</span><button data-action='reset' class='reset'>重置</button></div>");
+              titlebox.append(("<div class='amalthea_title_controls' data-cell-id='" + i + "'><span class='code-type'>" + langStr.title + "</span><button data-action='reset' class='reset'>") + locale['RESET'] + "</button></div>");
               titlebox.append("<div class='amalthea_title_text'><span>" + title + "</span></div>");
               wrap.append(titlebox);
             }
@@ -336,7 +336,7 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
           }
           if (title) {
             titlebox = $("<div class='amalthea_title' data-cell-id='" + i + "'></div>");
-            titlebox.append("<div class='amalthea_title_controls' data-cell-id='" + i + "'><span class='code-type'>" + langStr.title + "</span><button data-action='reset' class='reset'>重置</button><button data-action='copy' class='copy'>复制</button></div>");
+            titlebox.append(("<div class='amalthea_title_controls' data-cell-id='" + i + "'><span class='code-type'>" + langStr.title + "</span><button data-action='reset' class='reset'>") + locale['RESET'] + "</button><button data-action='copy' class='copy'>" + locale['COPY'] + "</button></div>");
             titlebox.append("<div class='amalthea_title_text'><span>" + title + "</span></div>");
             wrap.append(titlebox);
           }
@@ -621,17 +621,17 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
       }
       result = "<button data-action='run' data-state='" + state + "'>" + html + "</button>";
       if (this.options.add_interrupt_button && state === this.busy_state) {
-        result += "<button data-action='interrupt'>中断</button>";
+        result += "<button data-action='interrupt'>" + locale['INTERRUPT'] + "</button>";
       }
       if (state === this.user_error) {
         result += this.ui["error_addendum"];
       }
       if (cell && cell.get_hint() && !cell.showHint && !cell.showSolution) {
-        result += "<button data-action='showhint' class='hint'>显示提示</button>";
+        result += "<button data-action='showhint' class='hint'>" + locale['SHOWHINT'] + "</button>";
       } else if (cell && cell.get_hint() && cell.showHint && !cell.showSolution) {
-        result += "<button data-action='showhint' class='solution'>显示答案</button>";
+        result += "<button data-action='showhint' class='solution'>" + locale['SHOWANS'] + "</button>";
       } else if (cell && cell.get_hint() && cell.showSolution) {
-        result += "<button data-action='showhint' class='solution'>隐藏答案</button>";
+        result += "<button data-action='showhint' class='solution'>" + locale['HIDEANS'] + "</button>";
       }
       result += '<a href="https://amalthea.ai" target="_blank"><div class="poweredby-amalthea"></div></a>';
       return result;
@@ -657,13 +657,13 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
       if (!html) {
         html = this.ui[state];
       }
-      result = "<button data-action='run'>提交答案</button>";
+      result = "<button data-action='run'>" + locale['SUBMIT'] + "</button>";
       if (cell && cell.get_hint() && !cell.showHint && !cell.showSolution) {
-        result += "<button data-action='showhint' class='hint'>显示提示</button>";
+        result += "<button data-action='showhint' class='hint'>" + locale['SHOWHINT'] + "</button>";
       } else if (cell && cell.get_hint() && cell.showHint && !cell.showSolution) {
-        result += "<button data-action='showhint' class='solution'>显示答案</button>";
+        result += "<button data-action='showhint' class='solution'>" + locale['SHOWANS'] + "</button>";
       } else if (cell && cell.get_hint() && cell.showSolution) {
-        result += "<button data-action='showhint' class='solution'>隐藏答案</button>";
+        result += "<button data-action='showhint' class='solution'>" + locale['HIDEANS'] + "</button>";
       }
       result += '<a href="#" target="_blank"><div class="poweredby-amalthea"></div></a>';
       return result;
@@ -811,7 +811,7 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
       var event;
       $(".amalthea_message[data-cell-id=" + id + "]").hide();
       if (b) {
-        $(".amalthea_message[data-cell-id=" + id + "]").text("答案通过！").removeClass("message_wrong").addClass("message_right");
+        $(".amalthea_message[data-cell-id=" + id + "]").text(locale['SUCCESS']).removeClass("message_wrong").addClass("message_right");
         if (this.handler) {
           event = new CustomEvent("amalthea.checked", {
             'detail': {
@@ -822,7 +822,7 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
           this.handler.node.dispatchEvent(event);
         }
       } else {
-        $(".amalthea_message[data-cell-id=" + id + "]").text("答案未通过！").removeClass("message_right").addClass("message_wrong");
+        $(".amalthea_message[data-cell-id=" + id + "]").text(locale['FAIL']).removeClass("message_right").addClass("message_wrong");
         if (this.handler) {
           event = new CustomEvent("amalthea.checked", {
             'detail': {
@@ -909,7 +909,7 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
         ele.html('<div class="amalthea_hint_area"><div>' + cell.get_hint() + '</div></div>');
         ele.css("display", "block");
         cell.showHint = true;
-        e.html("显示答案");
+        e.html(locale['SHOWANS']);
         e.removeClass("hint");
         return e.addClass("solution");
       } else if (cell.showHint && !cell.showSolution) {
@@ -921,13 +921,13 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
         ele.css("display", "block");
         cell.showHint = false;
         cell.showSolution = true;
-        return e.html("隐藏答案");
+        return e.html(locale['HIDEANS']);
       } else {
         ele = $('.amalthea_solution[data-cell-id="' + cell_id + '"]');
         ele.html('');
         ele.css("display", "none");
         cell.showSolution = false;
-        e.html("显示提示");
+        e.html(locale['SHOWHINT']);
         e.removeClass("solution");
         return e.addClass("hint");
       }

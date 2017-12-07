@@ -1,5 +1,6 @@
 define [
   'base/js/namespace'
+  'amalthea/locale'
   'jquery'
   'ansi_up'
   'promise'
@@ -17,7 +18,7 @@ define [
   'codemirror/mode/javascript/javascript'
   'codemirror/mode/shell/shell'
 
-], (IPython, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel, CodeMirror) ->
+], (IPython, locale, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel, CodeMirror) ->
 
   promise.polyfill()
 
@@ -82,26 +83,26 @@ define [
     
     setup_constants: ->
       @error_states     = [@disc_state, @full_state, @cant_state, @gaveup_state]
-      @ui[@start_state] = '启动中'
-      @ui[@idle_state]  = '运行'
-      @ui[@busy_state]  = '运行中<svg version="1.1" class="amalthea-running" xmlns="http://www.w3.org/2000/svg" viewBox="-60 -60 98 42"><path class="cls-0" d="M0.2-32.9c19.4,0,36.3,7,45.1,17.4c-8.7-24.9-35.9-38-60.8-29.3C-29.3-40-40.1-29.2-44.9-15.5
+      @ui[@start_state] = locale['STARTING']
+      @ui[@idle_state]  = locale['RUN']
+      @ui[@busy_state]  = locale['RUNNING'] + '<svg version="1.1" class="amalthea-running" xmlns="http://www.w3.org/2000/svg" viewBox="-60 -60 98 42"><path class="cls-0" d="M0.2-32.9c19.4,0,36.3,7,45.1,17.4c-8.7-24.9-35.9-38-60.8-29.3C-29.3-40-40.1-29.2-44.9-15.5
   C-36.1-25.9-19.2-32.9,0.2-32.9"/><path class="cls-1" d="M42.2-52c0.1,4.9-3.7,8.9-8.5,9.1c-4.9,0.1-8.9-3.7-9.1-8.5c-0.1-4.8,3.6-8.8,8.4-9.1c4.9-0.2,9,3.5,9.2,8.4
   C42.2-52.1,42.2-52.1,42.2-52"/><path class="cls-2" d="M-41.1-37c-3.6,0.2-6.6-2.6-6.8-6.1s2.6-6.6,6.1-6.8c3.6-0.2,6.6,2.6,6.8,6.1c0,0,0,0,0,0v0.1
   C-34.8-40.2-37.6-37.2-41.1-37C-41.1-37-41.1-37-41.1-37L-41.1-37L-41.1-37z"/><path class="cls-3" d="M-2.2-65.3C-2-59-6.9-53.7-13.3-53.5s-11.6-4.7-11.8-11.1c-0.2-6.3,4.7-11.5,10.9-11.8
   c6.3-0.3,11.7,4.6,11.9,10.9C-2.2-65.4-2.2-65.3-2.2-65.3"/></svg>
 '
-      @ui[@ran_state]   = '再次运行'
+      @ui[@ran_state]   = locale['REPEAT']
       # Button stays the same, but we add the addendum for a user error
-      @ui[@user_error]  = '再次运行'
-      @ui[@interrupt_state]   = '连接中断'
-      @ui[@full_state]  = '服务器忙'
-      @ui[@cant_state]  = '连接失败'
-      @ui[@disc_state]  = '重连中'
-      @ui[@gaveup_state]= '重新运行'
+      @ui[@user_error]  = locale['REPEAT']
+      @ui[@interrupt_state]   = locale['NETINTER']
+      @ui[@full_state]  = locale['BUSY']
+      @ui[@cant_state]  = locale['CONNERR']
+      @ui[@disc_state]  = locale['RECONN']
+      @ui[@gaveup_state]= locale['RUNAGAIN']
 
       if @options.error_addendum is false then @ui['error_addendum']  = ""
       else if @options.error_addendum is true
-        @ui['error_addendum']  = "<button data-action='run-above'>全部运行</button> <div class='amalthea-message'>看上去出现了一些错误，您可能需要运行之前的所有程序。</div>"
+        @ui['error_addendum']  = "<button data-action='run-above'>" + locale['RUNTOTAL'] + "</button> <div class='amalthea-message'>" + locale['ERRORINFO'] + "</div>"
       else @ui['error_addendum'] = @options.error_addendum
 
     # See default_options above
@@ -242,7 +243,7 @@ define [
           cell = @notebook.insert_cell_at_bottom('code')
           title = $(el).find('div[data-type="title"]').text().trim()
           if not title
-            title = '测试题目'
+            title = locale['TITLE']
           cell.set_title title
           cell.set_solution $(el).find('div[data-type="solution"]').html()
           cell.set_hint $(el).find('div[data-type="hint"]').html()
@@ -287,7 +288,7 @@ define [
           wrap = $("<div class='amalthea_wrap' data-cell-id='#{i}'></div>")
           if title
             titlebox = $("<div class='amalthea_title' data-cell-id='#{i}'></div>")
-            titlebox.append "<div class='amalthea_title_controls' data-cell-id='#{i}'><span class='code-type'>#{langStr.title}</span><button data-action='reset' class='reset'>重置</button></div>"
+            titlebox.append "<div class='amalthea_title_controls' data-cell-id='#{i}'><span class='code-type'>#{langStr.title}</span><button data-action='reset' class='reset'>" + locale['RESET'] + "</button></div>"
             titlebox.append "<div class='amalthea_title_text'><span>#{title}</span></div>"
             wrap.append titlebox
           hint = $("<div class='amalthea_hint' data-cell-id='#{i}' style='display:none'></div>")
@@ -353,7 +354,7 @@ define [
           wrap.addClass('read-only')
         if title
           titlebox = $("<div class='amalthea_title' data-cell-id='#{i}'></div>")
-          titlebox.append "<div class='amalthea_title_controls' data-cell-id='#{i}'><span class='code-type'>#{langStr.title}</span><button data-action='reset' class='reset'>重置</button><button data-action='copy' class='copy'>复制</button></div>"
+          titlebox.append "<div class='amalthea_title_controls' data-cell-id='#{i}'><span class='code-type'>#{langStr.title}</span><button data-action='reset' class='reset'>" + locale['RESET'] + "</button><button data-action='copy' class='copy'>" + locale['COPY'] + "</button></div>"
           titlebox.append "<div class='amalthea_title_text'><span>#{title}</span></div>"
           wrap.append titlebox
         if pretext
@@ -579,15 +580,15 @@ define [
       if not html then html = @ui[state]
       result = "<button data-action='run' data-state='#{state}'>#{html}</button>"
       if @options.add_interrupt_button and state is @busy_state # and state is running??
-        result+="<button data-action='interrupt'>中断</button>"
+        result+="<button data-action='interrupt'>" + locale['INTERRUPT'] + "</button>"
       if state is @user_error
         result+=@ui["error_addendum"]
       if cell && cell.get_hint() && not cell.showHint && not cell.showSolution
-        result+="<button data-action='showhint' class='hint'>显示提示</button>"
+        result+="<button data-action='showhint' class='hint'>" + locale['SHOWHINT'] + "</button>"
       else if cell && cell.get_hint() && cell.showHint && not cell.showSolution
-        result+="<button data-action='showhint' class='solution'>显示答案</button>"
+        result+="<button data-action='showhint' class='solution'>" + locale['SHOWANS'] + "</button>"
       else if cell && cell.get_hint() && cell.showSolution
-        result+="<button data-action='showhint' class='solution'>隐藏答案</button>"
+        result+="<button data-action='showhint' class='solution'>" + locale['HIDEANS'] + "</button>"
       result+='<a href="https://amalthea.ai" target="_blank"><div class="poweredby-amalthea"></div></a>'
       result
       
@@ -595,13 +596,13 @@ define [
       if @not_execute[cell_id]
         return ""
       if not html then html = @ui[state]
-      result = "<button data-action='run'>提交答案</button>"
+      result = "<button data-action='run'>" + locale['SUBMIT'] + "</button>"
       if cell && cell.get_hint() && not cell.showHint && not cell.showSolution
-        result+="<button data-action='showhint' class='hint'>显示提示</button>"
+        result+="<button data-action='showhint' class='hint'>" + locale['SHOWHINT'] + "</button>"
       else if cell && cell.get_hint() && cell.showHint && not cell.showSolution
-        result+="<button data-action='showhint' class='solution'>显示答案</button>"
+        result+="<button data-action='showhint' class='solution'>" + locale['SHOWANS'] + "</button>"
       else if cell && cell.get_hint() && cell.showSolution
-        result+="<button data-action='showhint' class='solution'>隐藏答案</button>"
+        result+="<button data-action='showhint' class='solution'>" + locale['HIDEANS'] + "</button>"
       result+='<a href="#" target="_blank"><div class="poweredby-amalthea"></div></a>'
       result
 
@@ -714,7 +715,7 @@ define [
       $(".amalthea_message[data-cell-id=#{id}]").hide()
       if b 
         $(".amalthea_message[data-cell-id=#{id}]")
-          .text "答案通过！"
+          .text locale['SUCCESS']
           .removeClass "message_wrong"
           .addClass "message_right"
           if @handler
@@ -722,7 +723,7 @@ define [
             @handler.node.dispatchEvent event
       else
         $(".amalthea_message[data-cell-id=#{id}]")
-          .text "答案未通过！"
+          .text locale['FAIL']
           .removeClass "message_right"
           .addClass "message_wrong"
           if @handler
@@ -784,7 +785,7 @@ define [
         ele.html '<div class="amalthea_hint_area"><div>' + cell.get_hint() + '</div></div>'
         ele.css "display","block"
         cell.showHint = true
-        e.html "显示答案"
+        e.html locale['SHOWANS']
         e.removeClass "hint"
         e.addClass "solution"
       else if cell.showHint && not cell.showSolution
@@ -796,13 +797,13 @@ define [
         ele.css "display","block"
         cell.showHint = false
         cell.showSolution = true
-        e.html "隐藏答案"
+        e.html locale['HIDEANS']
       else
         ele = $('.amalthea_solution[data-cell-id="'+cell_id+'"]')
         ele.html ''
         ele.css "display","none"
         cell.showSolution = false
-        e.html "显示提示"
+        e.html locale['SHOWHINT']
         e.removeClass "solution"
         e.addClass "hint"
         

@@ -26,7 +26,7 @@
   border-bottom: 1px solid #CFD8DC;
   background: #fafafa;
   font-size: .9em;
-  line-height: 1.4em;
+  line-height: 1.5;
   overflow: hidden;
 }
 
@@ -138,17 +138,16 @@
   padding: 0 .2em;
   margin-left: .4em;
   border-radius: 0 0 0 .1em;
+  font-size: .9em;
+  line-height: 1.6;
 }
 
 .code-type {
   display: inline-block;
-  margin: 0 .2em;
-  font-size: .8em;
+  margin: 0 .3em;
 }
 
 .amalthea_title_controls>button {
-  font-size: .8em;
-  line-height: 1.4em;
   box-shadow: none;
   background: none;
   transition: opacity .3s;
@@ -157,7 +156,7 @@
   padding: 0;
   cursor: pointer;
   color: #78909C;
-  margin: 0 .2em;
+  margin: 0 .3em;
 }
 
 .amalthea_title_controls>button:hover {
@@ -174,7 +173,7 @@
 .amalthea_controls>button {
   float: left;
   font-size: .9em;
-  line-height: 1em;
+  line-height: 1;
   box-shadow: none;
   border-radius: .1em;
   background-color: #29B6F6;
@@ -203,8 +202,6 @@
 
 .input_area .CodeMirror {
   font-family: Menlo, Monaco, Consolas, Monospace;
-  font-size: .9em;
-  line-height: 1.4em;
 }
 
 .read-only .input_area .CodeMirror {
@@ -213,6 +210,8 @@
 
 .input {
   position: relative;
+  font-size: .9em;
+  line-height: 1.5;
 }
 
 .amalthea_output,
@@ -221,7 +220,7 @@
   border-top: 1px solid #CFD8DC;
   padding-left: 1.8em;
   background: rgb(247, 247, 247);
-  line-height: 1.4em;
+  line-height: 1.5;
   font-size: .9em;
   position: relative;
   overflow: hidden;
@@ -273,7 +272,7 @@
   left: 0;
   width: 100%;
   font-size: .8em;
-  line-height: .5em;
+  line-height: .6;
   font-weight: bold;
   overflow: hidden;
   opacity: .6;
@@ -292,10 +291,9 @@
   left: 0;
   width: 100%;
   font-size: .8em;
-  line-height: .5em;
   font-weight: bold;
   overflow: hidden;
-  line-height: 1em;
+  line-height: 1.2;
   background: rgba(255, 255, 255, .8);
   pointer-events: none;
   opacity: 0;
@@ -314,7 +312,7 @@
   right: .2em;
   top: .3em;
   font-size: .8em;
-  line-height: 1em;
+  line-height: 1;
   text-align: center;
   color: black;
   opacity: .3;

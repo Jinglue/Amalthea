@@ -24,10 +24,10 @@ define [
   class Amalthea
     default_options:
       # jquery selector for elements we want to make runnable
-      selector: 'pre[data-executable]'
+      selector: 'div[data-executable]'
       # the url of either a tmnb server or a notebook server
       # (default url assumes user is running tmpnb via boot2docker)
-      url: 'https://amalthea.jizhi.im:8000/'
+      url: 'https://localhost:8080'
       # is the url for tmpnb or for a notebook
       tmpnb_mode: true
       # the kernel name to use, must exist on notebook server
@@ -41,11 +41,11 @@ define [
       # Set to false to disable
       run_cell_shortcut: 13
       # For when you want a pre to become a CM instance, but not be runnable
-      not_executable_selector: "pre[data-not-executable]"
+      not_executable_selector: "div[data-not-executable]"
       # For when you want a pre to become a CM instance, but not be writable
-      read_only_selector: "pre[data-read-only]"
+      read_only_selector: "d1iv[data-read-only]"
       # if set to false, no addendum added, if a string, use that instead
-      error_addendum: true
+      error_addendum: false
       # adds interrupt to every cell control, when it's running
       add_interrupt_button: false
       # hack to set the codemirror mode correctly

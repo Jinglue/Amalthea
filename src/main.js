@@ -7,16 +7,16 @@ define(['base/js/namespace', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout'
   promise.polyfill();
   Amalthea = (function() {
     Amalthea.prototype.default_options = {
-      selector: 'pre[data-executable]',
-      url: 'https://amalthea.jizhi.im:8000/',
+      selector: 'div[data-executable]',
+      url: 'https://localhost:8080',
       tmpnb_mode: true,
       kernel_name: "python2",
       append_kernel_controls_to: false,
       next_cell_shortcut: 32,
       run_cell_shortcut: 13,
-      not_executable_selector: "pre[data-not-executable]",
-      read_only_selector: "pre[data-read-only]",
-      error_addendum: true,
+      not_executable_selector: "div[data-not-executable]",
+      read_only_selector: "d1iv[data-read-only]",
+      error_addendum: false,
       add_interrupt_button: false,
       codemirror_mode_name: "ipython",
       codemirror_theme_name: "default",

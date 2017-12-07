@@ -1,7 +1,7 @@
 {
 	"name": "amalthea",
 	"version": "1.0.1",
-	"main": "src/main.js",
+	"main": "dist/amalthea.js",
 	"repository": "https://github.com/Jinglue/Amalthea.git",
 	"author": "Apollo <zhaoyang@jizhi.im>",
 	"license": "MIT",
@@ -11,10 +11,10 @@
 		"hashmark": "hashmark dist/*.js -rsl 7 'dist/{name}.{hash}.bundle.js'",
 		"build": "rm -rf dist && coffee -cb src/main.coffee && r.js -o src/build.js baseUrl=./src name=almond include=main out=dist/amalthea.js && hashmark dist/*.js -sl 7 'dist/{name}.{hash}.bundle.js' && gzip -r -f -k dist/*.js"
 	},
-	"devDependencies": {},
-	"dependencies": {
+	"devDependencies": {
 		"coffee-script": "^1.12.7",
 		"hashmark": "^5.0.0",
 		"requirejs": "^2.3.5"
-	}
+	},
+	"dependencies": {}
 }

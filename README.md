@@ -19,6 +19,10 @@ Amalthea is a enhanced front-end version of Jupyter Notebook. With it, you can d
 
 Check https://jinglue.github.io/Amalthea/ for demos
 
+## Changelog
+
+https://github.com/Jinglue/Amalthea/releases
+
 ## How to Use
 
 Firstly, insert specific HTML elements to your webpage:

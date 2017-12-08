@@ -2,9 +2,20 @@
 	"name": "amalthea",
 	"version": "1.1.0",
 	"main": "dist/amalthea.js",
-	"repository": "https://github.com/Jinglue/Amalthea.git",
 	"author": "Apollo <zhaoyang@jizhi.im>",
+	"description": "the hyper front-end engine of data science",
+	"keywords": [
+		"html-plugin",
+		"online-judge",
+		"jupyter-notebook",
+	],
+	"homepage": "https://amalthea.ai",
 	"license": "MIT",
+	"bugs": "https://github.com/Jinglue/Amalthea/issues",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Jinglue/Amalthea.git"
+	},
 	"scripts": {
 		"preinstall": "bower install",
 		"test": "jest && eslint .",

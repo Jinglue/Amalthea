@@ -23,6 +23,17 @@ Check https://jinglue.github.io/Amalthea/ for demos
 
 https://github.com/Jinglue/Amalthea/releases
 
+## Download
+
+Download Amalthea with NPM or Bower:
+
+```shell
+npm install amalthea --save
+bower install amalthea --save
+```
+
+Then you can find the minified JavaScript Library in `dist` folder
+
 ## How to Use
 
 Firstly, insert specific HTML elements to your webpage:

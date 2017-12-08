@@ -1,6 +1,6 @@
 {
 	"name": "amalthea",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"main": "dist/amalthea.js",
 	"author": "Apollo <zhaoyang@jizhi.im>",
 	"description": "the hyper front-end engine of data science",

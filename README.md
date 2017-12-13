@@ -56,6 +56,7 @@ Firstly, insert specific HTML elements to your webpage:
 then you can load this plugin like normal JavaScript libraries:
 
 ```HTML
+<link rel="stylesheet" href="/style/amalthea.css">
 <script src="amalthea.js"></script>
 <script type="text/javascript">
 const amalthea = new Amalthea({
@@ -63,6 +64,8 @@ const amalthea = new Amalthea({
 });
 </script>
 ```
+
+Do not forget to add the CSS in your HTML.
 
 Alternatively, you can use SystemJS to load Amalthea dynamically:
 

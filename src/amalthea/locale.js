@@ -5,12 +5,12 @@ define([],
       "STARTING": "Starting",
       "RUN": "Run",
       "RUNNING": "Working",
-      "REPEAT": "Restart",
+      "REPEAT": "Rerun",
       "NETINTER": "Disconnected",
       "BUSY": "Server Busy",
       "CONNERR": "Net Error",
       "RECONN": "Reworking",
-      "RUNAGAIN": "Run Again",
+      "RUNAGAIN": "Restart",
       "RUNTOTAL": "Run All",
       "ERRORINFO": "Oops, some errors occured. Perhaps you must run all your previous code.",
       "TITLE": "Exercise",
@@ -23,6 +23,7 @@ define([],
       "SUBMIT": "Submit",
       "SUCCESS": "Proceed!",
       "FAIL": "Decline!",
+      "CSS": ".amalthea_wrap>.input:after{content:'INPUT'}.amalthea_pretext:after{content:'hidden pre-execution code exists'}.read-only .input:after{content:'PREVIEW'}.not-executable .input:after{content:none}.amalthea_output:after{content:'OUTPUT'}.amalthea_hint:after{content:'HINT'}.amalthea_solution:after{content:'SOLUTION'}"
     };
     var zh_text = {
       "STARTING": "启动中",
@@ -46,10 +47,19 @@ define([],
       "SUBMIT": "提交答案",
       "SUCCESS": "答案通过！",
       "FAIL": "答案未通过！",
+      "CSS": ".amalthea_wrap>.input:after{content:'输入'}.amalthea_pretext:after{content:'当前程序存在隐藏的预执行代码'}.read-only .input:after{content:'演示'}.not-executable .input:after{content:none}.amalthea_output:after{content:'输出'}.amalthea_hint:after{content:'提示'}.amalthea_solution:after{content:'答案'}"
     };
-
+    var text;
     if (navigator && navigator.language !== undefined && navigator.language.startsWith('zh')) {
-      return zh_text;
+      text = zh_text;
+    } else {
+      text = en_text;
     }
-    return en_text;
+    if (document) {
+      var css = document.createElement("style");
+      css.type = "text/css";
+      css.innerHTML = text["CSS"];
+      document.body.appendChild(css);
+    }
+    return text;
   })

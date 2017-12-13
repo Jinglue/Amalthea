@@ -62,7 +62,7 @@ define [
 
     # some constants we need
     spawn_path: "api/spawn/"
-    stats_path: "api/stats"
+	
     # state constants
     start_state:     "start"
     idle_state:      "idle"

@@ -18,7 +18,7 @@ define [
   'codemirror/mode/javascript/javascript'
   'codemirror/mode/shell/shell'
 
-], (IPython, locale, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel, CodeMirror) ->
+], (IPython, locale, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel) ->
 
   promise.polyfill()
 
@@ -44,7 +44,7 @@ define [
       # For when you want a pre to become a CM instance, but not be runnable
       not_executable_selector: "div[data-not-executable]"
       # For when you want a pre to become a CM instance, but not be writable
-      read_only_selector: "d1iv[data-read-only]"
+      read_only_selector: "div[data-read-only]"
       # if set to false, no addendum added, if a string, use that instead
       error_addendum: false
       # adds interrupt to every cell control, when it's running

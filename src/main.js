@@ -2,7 +2,7 @@
 var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
   indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-define(['base/js/namespace', 'amalthea/locale', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout', 'notebook/js/notebook', 'vendors/contents', 'base/js/events', 'services/kernels/kernel', 'codemirror/lib/codemirror', 'codemirror/mode/python/python', 'codemirror/mode/r/r', 'codemirror/mode/julia/julia', 'codemirror/mode/htmlmixed/htmlmixed', 'codemirror/mode/css/css', 'codemirror/mode/javascript/javascript', 'codemirror/mode/shell/shell'], function(IPython, locale, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel, CodeMirror) {
+define(['base/js/namespace', 'amalthea/locale', 'jquery', 'ansi_up', 'promise', 'vendors/dotimeout', 'notebook/js/notebook', 'vendors/contents', 'base/js/events', 'services/kernels/kernel', 'codemirror/lib/codemirror', 'codemirror/mode/python/python', 'codemirror/mode/r/r', 'codemirror/mode/julia/julia', 'codemirror/mode/htmlmixed/htmlmixed', 'codemirror/mode/css/css', 'codemirror/mode/javascript/javascript', 'codemirror/mode/shell/shell'], function(IPython, locale, $, ansi_up, promise, doTimeout, notebook, contents, events, kernel) {
   var Amalthea;
   promise.polyfill();
   Amalthea = (function() {
@@ -15,7 +15,7 @@ define(['base/js/namespace', 'amalthea/locale', 'jquery', 'ansi_up', 'promise', 
       next_cell_shortcut: 32,
       run_cell_shortcut: 13,
       not_executable_selector: "div[data-not-executable]",
-      read_only_selector: "d1iv[data-read-only]",
+      read_only_selector: "div[data-read-only]",
       error_addendum: false,
       add_interrupt_button: false,
       codemirror_mode_name: "ipython",
@@ -26,8 +26,6 @@ define(['base/js/namespace', 'amalthea/locale', 'jquery', 'ansi_up', 'promise', 
     };
 
     Amalthea.prototype.spawn_path = "api/spawn/";
-
-    Amalthea.prototype.stats_path = "api/stats";
 
     Amalthea.prototype.start_state = "start";
 

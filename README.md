@@ -53,6 +53,8 @@ Firstly, insert specific HTML elements to your webpage:
 </div>
 ```
 
+Such formatted HTML can be ganerated with the `ganerate.html` in `docs` folder.
+
 then you can load this plugin like normal JavaScript libraries:
 
 ```HTML

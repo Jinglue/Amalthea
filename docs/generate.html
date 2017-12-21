@@ -1,0 +1,370 @@
+<html lang="zh-cmn-Hans">
+
+<head>
+	<title>Amalthea Generation</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" , href="/icons/favicon_large.png" , type="image/png">
+	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="amalthea.css">
+	<style>
+		.form-center {
+			display: flex;
+		}
+
+		.amalthea-panel fieldset {
+			margin: 1rem;
+			margin-left: 0;
+			border: none;
+			width: 50%;
+			padding: 0;
+		}
+
+		.amalthea-wrapper {
+			width: 50%;
+		}
+
+		.amalthea-box {
+			margin-top: 2rem;
+		}
+
+		@media only screen and (max-width: 800px) {
+			.form-center {
+				display: block;
+			}
+			.amalthea-panel fieldset {
+				width: auto;
+				margin: 0;
+			}
+			.amalthea-wrapper {
+				width: 100%;
+			}
+		}
+
+		.amalthea-panel {
+			position: relative;
+			line-height: 1.5;
+		}
+
+		.amalthea-container label {
+			padding: .2rem 0;
+			margin: 0;
+			margin-right: .5rem;
+			margin-top: .3rem;
+			font-size: .9rem;
+			line-height: 1.5rem;
+			border-radius: .5rem;
+			color: #666;
+			display: inline-block;
+		}
+
+		.amalthea-container select {
+			padding: .2rem 0;
+			margin: 0;
+			margin-right: .5rem;
+			margin-top: .3rem;
+			min-width: 10rem;
+			font-size: .9rem;
+			line-height: 1.5rem;
+			border-radius: .5rem;
+			box-sizing: border-box;
+			display: inline-block;
+		}
+
+		.amalthea-panel textarea {
+			display: block;
+			min-height: auto;
+			font-size: .9rem;
+			line-height: 1.2rem;
+			width: 100%;
+			resize: vertical;
+			border-color: #CCC;
+			box-sizing: border-box;
+			padding: .5rem;
+			font-family: monaco, consolas, monospace;
+		}
+
+		.amalthea-panel .controls {
+			margin-bottom: -1rem;
+			overflow: auto;
+		}
+
+		.amalthea-cancel {
+			float: right;
+			margin-right: 10px;
+		}
+
+		.amalthea-reset {
+			float: left;
+		}
+
+		.amalthea-submit {
+			float: right;
+		}
+
+		.amalthea-panel select {
+			position: relative;
+			overflow: hidden;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-color: #d9d9d9 #ccc #b3b3b3;
+			border-radius: 4px;
+			box-sizing: border-box;
+			color: #333;
+			cursor: default;
+			outline: none;
+			padding: 8px 52px 8px 10px;
+			margin-top: 5px;
+		}
+
+		.amalthea-controls {
+			text-align: center;
+			margin-top: 1rem;
+		}
+
+		.amalthea-title {
+			width: 100%;
+			filter: grayscale();
+			opacity: .4;
+			margin-top: 1rem;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="body">
+		<div class="container">
+			<section class="main">
+				<div id="amalthea-dialog" class="amalthea-panel content" title="Insert Amalthea Exercise">
+					<div class="amalthea-container">
+						<form>
+							<h2>生成Amalthea样例</h2>
+							<div class="form-center">
+								<fieldset>
+									<label class="field-label" for="amalthea-programming-language">程序语言</label>
+									<select name="amalthea-programming-language" id="amalthea-programming-language" class="Select-control">
+										<option value="python" selected="selected">Python 3</option>
+										<option value="python2">Python 2</option>
+										<option value="r">R</option>
+										<option value="julia">Julia</option>
+										<option value="javascript">JavaScript</option>
+										<option value="typescript">TypeScript</option>
+										<option value="html">HTML</option>
+										<option value="css">CSS</option>
+										<option value="shell">Shell</option>
+									</select>
+									<div>
+										<label for="amalthea-executable"><input type="checkbox" name="amalthea-executable" id="amalthea-executable" value="executable" checked><span>程序可运行</span></label>
+										<label for="amalthea-writable"><input type="checkbox" name="amalthea-writable" id="amalthea-writable" value="writable" checked><span>程序可修改</span></label>
+									</div>
+									<div><label class="field-label" for="amalthea-title" class="fw">程序说明</label></div>
+									<textarea class="FormInput" rows="1" name="amalthea-title" id="amalthea-title" placeholder="说明程序的主要内容以及所要完成的任务"></textarea>
+									<label class="field-label" for="amalthea-pre-exercise-code" class="fw">预处理代码</label>
+									<textarea class="FormInput" rows="3" name="amalthea-pre-exercise-code" id="amalthea-pre-exercise-code" placeholder="用户提交程序时所预先执行的代码，这部分代码不对用户可见。"></textarea>
+									<label class="field-label" for="amalthea-sample-code" class="fw">示例代码</label>
+									<textarea class="FormInput" rows="5" name="amalthea-sample-code" id="amalthea-sample-code" placeholder="用户可查看的代码，可以允许被修改并提交运行。"></textarea>
+									<div class="onlyforrun">
+										<label class="field-label" for="amalthea-solution">正确答案</label>
+										<textarea class="FormInput" rows="3" name="amalthea-solution" id="amalthea-solution" placeholder="练习题目的正确答案，请保持程序格式规整美观。"></textarea>
+										<label class="field-label" for="amalthea-sct">程序验证过程</label>
+										<textarea class="FormInput" rows="3" name="amalthea-sct" id="amalthea-sct" placeholder="用户提交代码的正确性评判过程，必须是一段返回Boolean值的代码（不允许打印任何内容），返回值为true表示测试通过。"></textarea>
+										<label for="amalthea-sct-method0"><input type="radio" name="amalthea-sct-method" id="amalthea-sct-method0" value="method0" checked><span>验证程序功能</span></label>
+										<label for="amalthea-sct-method1"><input type="radio" name="amalthea-sct-method" id="amalthea-sct-method1" value="method1"><span>验证程序输出</span></label>
+										<div><label class="field-label" for="amalthea-hint">提示信息</label></div>
+										<textarea class="FormInput" rows="2" name="amalthea-hint" id="amalthea-hint" placeholder="简单的文字提示，帮助用户完成练习题目。"></textarea>
+									</div>
+								</fieldset>
+								<div class="amalthea-wrapper">
+									<div class="amalthea-box">
+										<img class="amalthea-title" src="amalthea.svg">
+									</div>
+									<div class="amalthea-controls">
+									</div>
+								</div>
+							</div>
+							<div class="controls">
+								<button type="reset" class="Button Button--default amalthea-reset float-left">重置表单</button>
+								<button type="submit" class="Button Button--default amalthea-submit float-right">生成HTML</button>
+								<button class="Button Button--default amalthea-compile float-right">生成Amalthea</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="amalthea.js"></script>
+	<script>
+		function runAmalthea() {
+			if (window.handler != undefined) {
+				window.handler.node.dispatchEvent(new window.CustomEvent('refresh'));
+			} else {
+				window.handler = {
+					running: false,
+					node: window.document.createElement("div")
+				};
+				new window.Amalthea({
+					url: 'https://amalthea.jizhi.im:8000',
+					handler: window.handler
+				});
+			}
+		}
+
+		function htmlEscape(str) {
+			return str
+				.replace(/&/g, '&amp;')
+				.replace(/"/g, '&quot;')
+				.replace(/'/g, '&#39;')
+				.replace(/</g, '&lt;')
+				.replace(/>/g, '&gt;');
+		}
+
+		function createAttribute(dialog, name, idPart) {
+			var value = $.trim(dialog.find("#amalthea-" + idPart).val());
+			if (!value)
+				return "";
+			return ' ' + name + '="' + value + '"';
+		}
+
+		function processTestAmaltheaExerciseForm(dialog, html) {
+			var indent = "";
+			var title = dialog.find("#amalthea-title").val();
+			var pec = dialog.find("#amalthea-pre-exercise-code").val();
+			var sampleCode = dialog.find("#amalthea-sample-code").val();
+			var solution = dialog.find("#amalthea-solution").val();
+			var sct = dialog.find("#amalthea-sct").val();
+			var hint = dialog.find("#amalthea-hint").val();
+
+			var output = '<div data-amalthea-exercise';
+			output += createAttribute(dialog, "data-lang", "programming-language");
+			if (dialog.find("#amalthea-executable").prop("checked")) {
+				output += ' data-executable'
+			} else {
+				output += ' data-not-executable'
+			}
+			if (dialog.find("#amalthea-writable").prop("checked")) {
+				output += ''
+			} else {
+				output += ' data-read-only'
+			}
+			output += '>\n';
+
+			if (title) {
+				output += indent + "<pre><code data-type='title'>\n";
+				output += title;
+				output += indent + "\n</code></pre>\n";
+			}
+			if (pec) {
+				output += indent + "<pre><code data-type='pre-exercise-code'>\n";
+				output += htmlEscape(pec);
+				output += indent + "\n</code></pre>\n";
+			}
+			if (sampleCode) {
+				output += indent + "<pre><code data-type='sample-code'>\n";
+				output += htmlEscape(sampleCode);
+				output += indent + "\n</code></pre>\n";
+			}
+			if (solution) {
+				output += indent + "<pre><code data-type='solution'>\n";
+				output += htmlEscape(solution);
+				output += indent + "\n</code></pre>\n";
+			}
+			if (sct) {
+				output += indent + "<pre><code data-type='sct'"
+				if (dialog.find("#amalthea-sct-method1").prop("checked")) {
+					output += ' data-method="1"'
+				} else {
+					output += ' data-method="0"'
+				}
+				output += ">\n";
+				output += htmlEscape(sct);
+				output += indent + "\n</code></pre>\n";
+			}
+			if (hint) {
+				output += indent + "<pre><code data-type='hint'>\n";
+				output += htmlEscape(hint);
+				output += indent + "\n</code></pre>\n";
+			}
+			output += '</div>';
+
+			if (html) {
+				output = '<div data-amalthea-exercise data-lang="html" data-not-executable data-read-only><pre><code data-type="title">请将以下HTML代码粘贴到您的文档中</code></pre><pre><code data-type="sample-code">' + htmlEscape(output) + '</code></pre></div>';
+				dialog.find(".amalthea-box").html(output);
+			} else {
+				dialog.find(".amalthea-box").html(output);
+			}
+		}
+
+		function setListeners() {
+			$("#amalthea-dialog .amalthea-reset").click(function(e) {
+				e.preventDefault();
+				$('.amalthea-dialog').remove();
+				var ndialog = $("#amalthea-media-button-popup").clone().appendTo("body");
+				ndialog.attr('id', 'amalthea-dialog');
+				ndialog.addClass('amalthea-dialog');
+				ndialog.show();
+				setListeners();
+			})
+			$("#amalthea-dialog .amalthea-cancel").click(function(e) {
+				e.preventDefault();
+				$('#amalthea-dialog').hide();
+				document.body.style.overflow = '';
+				callback("");
+			})
+			$("#amalthea-dialog .amalthea-compile").click(function(e) {
+				e.preventDefault();
+				processTestAmaltheaExerciseForm($('#amalthea-dialog'));
+				runAmalthea();
+			})
+			$("#amalthea-dialog .amalthea-submit").click(function(e) {
+				e.preventDefault();
+				processTestAmaltheaExerciseForm($('#amalthea-dialog'), true);
+				runAmalthea();
+			})
+			$('#amalthea-dialog').delegate('textarea', 'keydown', function(e) {
+				var keyCode = e.keyCode || e.which;
+
+				if (keyCode == 9) {
+					e.preventDefault();
+					var start = $(this).get(0).selectionStart;
+					var end = $(this).get(0).selectionEnd;
+
+					$(this).val($(this).val().substring(0, start) + "    " + $(this).val().substring(end));
+
+					$(this).get(0).selectionStart = $(this).get(0).selectionEnd = start + 4;
+				}
+			});
+
+			$('#amalthea-dialog .Select-control').change(function() {
+				if (['css', 'html', 'typescript', 'shell'].indexOf(this.value) > -1) {
+					$('#amalthea-dialog #amalthea-executable').prop('checked', false).prop('disabled', true);
+					$('#amalthea-dialog #amalthea-writable').prop('checked', false);
+					$('#amalthea-dialog .onlyforrun').hide();
+				} else {
+					$('#amalthea-dialog #amalthea-executable').prop('checked', true).prop('disabled', false);
+					$('#amalthea-dialog #amalthea-writable').prop('checked', true);
+					$('#amalthea-dialog .onlyforrun').show();
+				}
+			});
+
+			$('#amalthea-dialog #amalthea-executable').change(function() {
+				if (this.checked) {
+					$('#amalthea-dialog .onlyforrun').show();
+				} else {
+					$('#amalthea-dialog .onlyforrun').hide();
+				}
+			});
+			$('#amalthea-dialog input[type=radio][name=amalthea-sct-method]').change(function() {
+				if (this.value == 'method0') {
+					$("#amalthea-dialog #amalthea-sct").attr("placeholder", "用户提交代码的正确性评判过程，必须是一段返回Boolean值的功能验证代码（不允许打印任何内容），返回值为true表示测试通过。");
+				} else if (this.value == 'method1') {
+					$("#amalthea-dialog #amalthea-sct").attr("placeholder", "用户提交代码的正确性评判过程，必须是一段字符串，程序将自动采集用户编写代码的输出结果与该字符串进行比对，一致则表示测试通过。");
+				}
+			});
+		}
+		const dialog = $('#amalthea-dialog');
+		setListeners();
+	</script>
+</body>
+
+</html>

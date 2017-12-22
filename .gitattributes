@@ -2,3 +2,5 @@ src/vendors/* linguist-vendored
 src/almond.js linguist-vendored
 dist/* linguist-generated=true
 src/main.js linguist-generated=true
+docs/* linguist-documentation
+style/* linguist-documentation

@@ -1,4 +1,4 @@
-;(function (root, factory) {
+;(function (global, factory) {
     if (typeof define === 'function' && define.amd) {
         //Allow using this built library as an AMD module
         //in another project. That other project will only
@@ -11,6 +11,6 @@
     } else {
         //Browser globals case. Just assign the
         //result to a property on the global.
-        root.Amalthea = factory()['Amalthea'];
+        global.Amalthea = factory()['Amalthea'];
     }
 }(this, function () {

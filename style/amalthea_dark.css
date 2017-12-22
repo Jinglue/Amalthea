@@ -15,16 +15,16 @@
 }
 
 .amalthea_wrap {
-	border: 1px solid #CFD8DC;
 	border-radius: .1em;
 	position: relative;
 	text-align: left;
 	-webkit-font-smoothing: subpixel-antialiased;
+	overflow: hidden;
 }
 
 .amalthea_title {
-	border-bottom: 1px solid #CFD8DC;
-	background: #fafafa;
+	background: #546E7A;
+	color: #ECEFF1;
 	font-size: .9em;
 	line-height: 1.5;
 	overflow: hidden;
@@ -132,9 +132,8 @@
 .amalthea_title_controls {
 	display: inline-block;
 	float: right;
-	border-left: 1px solid #CFD8DC;
-	border-bottom: 1px solid #CFD8DC;
-	background: #FFF;
+	background: #78909C;
+	;
 	padding: 0 .2em;
 	margin-left: .4em;
 	border-radius: 0 0 0 .1em;
@@ -156,7 +155,7 @@
 	font-weight: normal;
 	padding: 0;
 	cursor: pointer;
-	color: #78909C;
+	color: #CFD8DC;
 	margin: 0 .3em;
 }
 
@@ -165,8 +164,7 @@
 }
 
 .amalthea_controls {
-	border-top: 1px solid #CFD8DC;
-	background: #fafafa;
+	background: #37474F;
 	max-height: 3.4em;
 	overflow: hidden;
 }
@@ -178,7 +176,7 @@
 	box-shadow: none;
 	border: none;
 	border-radius: .1em;
-	background-color: #29B6F6;
+	background-color: #1E88E5;
 	transition: opacity .3s;
 	color: white;
 	outline: none;
@@ -189,11 +187,11 @@
 }
 
 .amalthea_controls button.hint {
-	background-color: #FFA726;
+	background-color: #E65100;
 }
 
 .amalthea_controls button.solution {
-	background-color: #EF5350;
+	background-color: #D32F2F;
 }
 
 .amalthea_controls button:hover {
@@ -219,13 +217,13 @@
 .amalthea_output,
 .amalthea_hint,
 .amalthea_solution {
-	border-top: 1px solid #CFD8DC;
 	padding-left: 1.8em;
-	background: rgb(247, 247, 247);
+	background: #37474F;
 	line-height: 1.5;
 	font-size: .9em;
 	position: relative;
 	overflow: hidden;
+	color: #B0BEC5;
 	animation: fadeIn .5s;
 }
 
@@ -236,7 +234,6 @@
 	position: relative;
 	line-height: 1.4em;
 	padding: .2em 0 .2em 2em;
-	border-top: 1px solid #CFD8DC;
 	animation: fadeIn .5s;
 }
 
@@ -315,7 +312,7 @@
 	font-size: .8em;
 	line-height: 1;
 	text-align: center;
-	color: black;
+	color: #ECEFF1;
 	opacity: .3;
 }
 
@@ -332,6 +329,7 @@
 	height: 1.2em;
 	opacity: .5;
 	z-index: 10;
+	filter: invert(1);
 }
 
 .amalthea_message:before {
@@ -354,7 +352,6 @@
 .amalthea_output_area,
 .amalthea_hint_area,
 .amalthea_solution_area {
-	background: rgb(247, 247, 247);
 	padding: .2em;
 	overflow: auto;
 	max-height: 5em;
@@ -394,6 +391,7 @@
 	width: 9.6em;
 	height: 2.4em;
 	background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgMTI4Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDojMjYzMjM4O30uYntmaWxsOiNkMWM3ZmU7fS5je2ZpbGw6I2Q4NDMxNTt9LmR7ZmlsbDojZTU3MzczO308L3N0eWxlPjwvZGVmcz48dGl0bGU+YW1hbHRoZWE8L3RpdGxlPjxwYXRoIGNsYXNzPSJhIiBkPSJNMTkzLjYsMzguOSwxNzQuOCw5NC4zaDcuNEwxODgsNzYuOWgxOS42bDUuOSwxNy40aDcuNkwyMDIuMiwzOC45Wm0tNC4xLDMyLjQsNS40LTE2YzEuMS0zLjMsMi02LjcsMi44LTEwaC4yYy44LDMuMiwxLjcsNi41LDIuOSwxMC4xbDUuNCwxNS45WiIvPjxwYXRoIGNsYXNzPSJhIiBkPSJNMjcyLjYsNTMuNmExMy44MiwxMy44MiwwLDAsMC04LjgsMi44LDE3LDE3LDAsMCwwLTQuNCw1LjJoLS4yYTExLjgzLDExLjgzLDAsMCwwLTExLjMtOCwxMy43OSwxMy43OSwwLDAsMC0xMi41LDcuM2gtLjJsLS4zLTYuNGgtNi4zYy4yLDMuMy4zLDYuNy4zLDEwLjh2LjFoMHYyOUgyMzZ2LTI0YTEwLjQ2LDEwLjQ2LDAsMCwxLC42LTMuNmMxLjEtMy42LDQuNC03LjIsOC45LTcuMiw1LjUsMCw4LjMsNC42LDguMywxMC45Vjk0LjRoNy4xVjY5LjhhMTEuMzIsMTEuMzIsMCwwLDEsLjYtMy42LDkuMjIsOS4yMiwwLDAsMSw4LjUtNi42YzUuOCwwLDguNiw0LjYsOC42LDEyLjJWOTQuM2g3LjFWNzAuOUMyODUuNyw1Ny4xLDI3Ny45LDUzLjYsMjcyLjYsNTMuNloiLz48cGF0aCBjbGFzcz0iYSIgZD0iTTMyNS40LDg0LjlWNzBjMC04LTIuOS0xNi4zLTE1LjEtMTYuM2EyNS4wOCwyNS4wOCwwLDAsMC0xMy4xLDMuNmwxLjYsNC43YTE4Ljc2LDE4Ljc2LDAsMCwxLDEwLjMtM2M4LjEsMCw5LDUuOSw5LDkuMlY2OWMtMTUuNC0uMS0yMy45LDUuMi0yMy45LDE0LjgsMCw1LjcsNC4yLDExLjQsMTIuMiwxMS40YTE0LjkyLDE0LjkyLDAsMCwwLDEyLjItNS45aC4ybC42LDUsNi43LjFBNTAsNTAsMCwwLDEsMzI1LjQsODQuOVptLTcuMS00LjFhNS44Nyw1Ljg3LDAsMCwxLS40LDIuMyw5LjkxLDkuOTEsMCwwLDEtOS42LDYuN2MtMy43LDAtNi44LTIuMi02LjgtNi45LDAtNy43LDguOS05LjEsMTYuOC04LjlaIi8+PHJlY3QgY2xhc3M9ImEiIHg9IjMzNyIgeT0iMzYiIHdpZHRoPSI3LjIiIGhlaWdodD0iNTguMyIvPjxwYXRoIGNsYXNzPSJhIiBkPSJNMzY1LDQzLjFsLTcsMnY5LjVoLTYuMnY1LjVoNi4xVjgxLjhjMCw0LjYuNyw4LjIsMi44LDEwLjNhOS44OSw5Ljg5LDAsMCwwLDcuOCwzLDE3LjUxLDE3LjUxLDAsMCwwLDYuNC0xbC0uMy01LjRhMTUuMDksMTUuMDksMCwwLDEtNC4yLjVjLTQsMC01LjQtMi44LTUuNC03LjdWNjAuMWgxMC4zVjU0LjZIMzY1WiIvPjxwYXRoIGNsYXNzPSJhIiBkPSJNNDAzLjUsNTMuNmExNS44NSwxNS44NSwwLDAsMC03LjQsMi4xLDEzLjQyLDEzLjQyLDAsMCwwLTUuMiw1LjFoLS4yVjM2aC03LjJWOTQuM2g3LjJ2LTI0YTguMjgsOC4yOCwwLDAsMSwuNS0zLjUsMTAuNTMsMTAuNTMsMCwwLDEsOS43LTcuMmM2LjgsMCw5LjIsNS41LDkuMiwxMS45Vjk0LjNoNy4zVjcwLjZDNDE3LjQsNTYuOSw0MDguOCw1My42LDQwMy41LDUzLjZaIi8+PHBhdGggY2xhc3M9ImEiIGQ9Ik00NDQuOSw1My44Yy0xMS41LDAtMTguNiw5LjQtMTguNiwyMS40czcuMywyMCwxOS41LDIwQTMzLjMyLDMzLjMyLDAsMCwwLDQ1OSw5Mi43bC0xLjItNS4yYTI2LDI2LDAsMCwxLTExLDIuMWMtNy4yLDAtMTMuNC00LTEzLjYtMTMuOCwwLDAsMjcuOSwwLDI3LjkuMS4xLTEuMS4yLTIuMy4yLTMuNEM0NjEuMyw2NS4yLDQ1Ny45LDUzLjgsNDQ0LjksNTMuOFpNNDMzLjMsNzAuNmMuNi01LDMuOC0xMS43LDExLjEtMTEuNyw4LjEsMCwxMC4xLDcuMSwxMCwxMS43WiIvPjxwYXRoIGNsYXNzPSJhIiBkPSJNNDk4LjMsODQuOVY3MGMwLTgtMi45LTE2LjMtMTUuMS0xNi4zYTI1LjA4LDI1LjA4LDAsMCwwLTEzLjEsMy42bDEuNiw0LjdBMTguNzYsMTguNzYsMCwwLDEsNDgyLDU5YzguMSwwLDksNS45LDksOS4yVjY5Yy0xNS40LS4xLTIzLjksNS4yLTIzLjksMTQuOCwwLDUuNyw0LjIsMTEuNCwxMi4yLDExLjRhMTQuOTIsMTQuOTIsMCwwLDAsMTIuMi01LjloLjJsLjYsNSw2LjcuMUE1MCw1MCwwLDAsMSw0OTguMyw4NC45Wm0tNy4xLTQuMWE1Ljg3LDUuODcsMCwwLDEtLjQsMi4zLDkuOTEsOS45MSwwLDAsMS05LjYsNi43Yy0zLjcsMC02LjgtMi4yLTYuOC02LjksMC03LjcsOC45LTkuMSwxNi44LTguOVoiLz48cGF0aCBjbGFzcz0iYiIgZD0iTTE1MC43LDUwLjhhMTMuNDEsMTMuNDEsMCwxLDEtMTQtMTMsMTMuNTcsMTMuNTcsMCwwLDEsMTQuMSwxMi44Yy0uMS4xLS4xLjEtLjEuMiIvPjxwYXRoIGNsYXNzPSJjIiBkPSJNODYuNiw3OS45YzI5LjYsMCw1NS40LDEwLjcsNjguOCwyNi42YTcyLjg0LDcyLjg0LDAsMCwwLTEzNy41LDBDMzEuMiw5MC42LDU3LDc5LjksODYuNiw3OS45Ii8+PHBhdGggY2xhc3M9ImIiIGQ9Ik0yMy41LDczLjdhOS45MSw5LjkxLDAsMSwxLDkuNC0xMC40aDB2LjFhOS44NCw5Ljg0LDAsMCwxLTkuNCwxMC4zWiIvPjxwYXRoIGNsYXNzPSJkIiBkPSJNODIuOSwzMC41YTE2Ljg1LDE2Ljg1LDAsMSwxLDAtLjJ2LjIiLz48L3N2Zz4=');
+	filter: grayscale(1) brightness(3.6);
 }
 
 .not-executable .amalthea_controls {
@@ -937,4 +935,139 @@
 
 span.CodeMirror-selectedtext {
 	background: 0
+}
+
+/* CodeMirror Material Themes */
+
+.cm-s-default.CodeMirror {
+	background-color: #263238;
+	color: rgba(233, 237, 237, 1);
+}
+
+.cm-s-default .CodeMirror-gutters {
+	background: #263238;
+	color: rgb(83, 127, 126);
+	border: none;
+}
+
+.cm-s-default .CodeMirror-guttermarker,
+.cm-s-default .CodeMirror-guttermarker-subtle,
+.cm-s-default .CodeMirror-linenumber {
+	color: rgb(83, 127, 126);
+}
+
+.cm-s-default .CodeMirror-cursor {
+	border-left: 1px solid #f8f8f0;
+}
+
+.cm-s-default div.CodeMirror-selected {
+	background: rgba(255, 255, 255, 0.15);
+}
+
+.cm-s-default.CodeMirror-focused div.CodeMirror-selected {
+	background: rgba(255, 255, 255, 0.10);
+}
+
+.cm-s-default .CodeMirror-line::selection,
+.cm-s-default .CodeMirror-line > span::selection,
+.cm-s-default .CodeMirror-line > span > span::selection {
+	background: rgba(255, 255, 255, 0.10);
+}
+
+.cm-s-default .CodeMirror-line::-moz-selection,
+.cm-s-default .CodeMirror-line > span::-moz-selection,
+.cm-s-default .CodeMirror-line > span > span::-moz-selection {
+	background: rgba(255, 255, 255, 0.10);
+}
+
+.cm-s-default .CodeMirror-activeline-background {
+	background: rgba(0, 0, 0, 0);
+}
+
+.cm-s-default .cm-keyword {
+	color: rgba(199, 146, 234, 1);
+}
+
+.cm-s-default .cm-operator {
+	color: rgba(233, 237, 237, 1);
+}
+
+.cm-s-default .cm-variable-2 {
+	color: #80CBC4;
+}
+
+.cm-s-default .cm-variable-3,
+.cm-s-default .cm-type {
+	color: #82B1FF;
+}
+
+.cm-s-default .cm-builtin {
+	color: #DECB6B;
+}
+
+.cm-s-default .cm-atom {
+	color: #F77669;
+}
+
+.cm-s-default .cm-number {
+	color: #F77669;
+}
+
+.cm-s-default .cm-def {
+	color: rgba(233, 237, 237, 1);
+}
+
+.cm-s-default .cm-string {
+	color: #C3E88D;
+}
+
+.cm-s-default .cm-string-2 {
+	color: #80CBC4;
+}
+
+.cm-s-default .cm-comment {
+	color: #546E7A;
+}
+
+.cm-s-default .cm-variable {
+	color: #82B1FF;
+}
+
+.cm-s-default .cm-tag {
+	color: #80CBC4;
+}
+
+.cm-s-default .cm-meta {
+	color: #80CBC4;
+}
+
+.cm-s-default .cm-attribute {
+	color: #FFCB6B;
+}
+
+.cm-s-default .cm-property {
+	color: #80CBAE;
+}
+
+.cm-s-default .cm-qualifier {
+	color: #DECB6B;
+}
+
+.cm-s-default .cm-variable-3,
+.cm-s-default .cm-type {
+	color: #DECB6B;
+}
+
+.cm-s-default .cm-tag {
+	color: rgba(255, 83, 112, 1);
+}
+
+.cm-s-default .cm-error {
+	color: rgba(255, 255, 255, 1.0);
+	background-color: #EC5F67;
+}
+
+.cm-s-default .CodeMirror-matchingbracket {
+	text-decoration: underline;
+	color: white !important;
 }

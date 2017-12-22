@@ -4,13 +4,13 @@
 // to do, but at least the simple one for now.
 
 (function(mod) {
-  if (typeof exports == "object" && typeof module == "object"){ // CommonJS
+  if (typeof define == "function" && define.amd){ // AMD
+    define(["codemirror/lib/codemirror",
+            "codemirror/mode/python/python"], mod);
+  }else  if (typeof exports == "object" && typeof module == "object"){ // CommonJS
     mod(require("codemirror/lib/codemirror"),
         require("codemirror/mode/python/python")
         );
-  } else if (typeof define == "function" && define.amd){ // AMD
-    define(["codemirror/lib/codemirror",
-            "codemirror/mode/python/python"], mod);
   } else {// Plain browser env
     mod(CodeMirror);
   }

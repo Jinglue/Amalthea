@@ -239,7 +239,7 @@
 
 .amalthea_message:after {
 	content: "";
-	background-image: url('data:image/svg+xml;utf8,<svg fill=black viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+	background-image: url('data:image/svg+xml;utf8,<svg fill="black" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
 	float: right;
 	background-size: 1.3em;
 	width: 1.3em;
@@ -250,11 +250,11 @@
 }
 
 .amalthea_message.message_right {
-	background: rgb(100, 220, 100);
+	background: #4caf50;
 }
 
 .amalthea_message.message_wrong {
-	background: rgb(250, 100, 100);
+	background: #F44336;
 }
 
 .amalthea_pretext {
@@ -267,6 +267,7 @@
 	content: '•••';
 	text-align: center;
 	position: absolute;
+	color: #546E7A;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -334,7 +335,7 @@
 
 .amalthea_message:before {
 	opacity: 1;
-	background-image: url('data:image/svg+xml;utf8,<svg fill="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="transparent"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>');
+	background-image: url('data:image/svg+xml;utf8,<svg fill="black" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="transparent"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>');
 }
 
 .amalthea_output:before {
@@ -400,10 +401,10 @@
 
 @keyframes fadeIn {
 	from {
-		opacity: 0;
+		max-height: 0;
 	}
 	to {
-		opacity: 1;
+		max-height: 20em;
 	}
 }
 

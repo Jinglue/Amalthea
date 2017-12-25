@@ -1,7 +1,7 @@
 <html lang="zh-cmn-Hans">
 
 <head>
-	<title>Amalthea样例生成</title>
+	<title>Amalthea Generate</title>
 	<meta charset="utf-8">
 	<link rel="shortcut icon" , href="/icons/favicon_large.png" , type="image/png">
 	<link rel="stylesheet" href="styles/main.css">
@@ -137,11 +137,11 @@
 				<div id="amalthea-dialog" class="amalthea-panel content" title="Insert Amalthea Exercise">
 					<div class="amalthea-container">
 						<form>
-							<a href="generate_en.html" class="button float-right">English</a>
-							<h2>生成Amalthea样例</h2>
+							<a href="generate.html" class="button float-right">中文</a>
+							<h2>Generate Amalthea</h2>
 							<div class="form-center">
 								<fieldset>
-									<label class="field-label" for="amalthea-programming-language">程序语言</label>
+									<label class="field-label" for="amalthea-programming-language">Language</label>
 									<select name="amalthea-programming-language" id="amalthea-programming-language" class="Select-control">
 										<option value="python" selected="selected">Python 3</option>
 										<option value="python2">Python 2</option>
@@ -154,24 +154,24 @@
 										<option value="shell">Shell</option>
 									</select>
 									<div>
-										<label for="amalthea-executable"><input type="checkbox" name="amalthea-executable" id="amalthea-executable" value="executable" checked><span>程序可运行</span></label>
-										<label for="amalthea-writable"><input type="checkbox" name="amalthea-writable" id="amalthea-writable" value="writable" checked><span>程序可修改</span></label>
+										<label for="amalthea-executable"><input type="checkbox" name="amalthea-executable" id="amalthea-executable" value="executable" checked><span>Executable</span></label>
+										<label for="amalthea-writable"><input type="checkbox" name="amalthea-writable" id="amalthea-writable" value="writable" checked><span>Writable</span></label>
 									</div>
-									<div><label class="field-label" for="amalthea-title" class="fw">程序说明</label></div>
-									<textarea class="FormInput" rows="1" name="amalthea-title" id="amalthea-title" placeholder="说明程序的主要内容以及所要完成的任务"></textarea>
-									<label class="field-label" for="amalthea-pre-exercise-code" class="fw">预处理代码</label>
-									<textarea class="FormInput" rows="3" name="amalthea-pre-exercise-code" id="amalthea-pre-exercise-code" placeholder="用户提交程序时所预先执行的代码，这部分代码不对用户可见。"></textarea>
-									<label class="field-label" for="amalthea-sample-code" class="fw">示例代码</label>
-									<textarea class="FormInput" rows="5" name="amalthea-sample-code" id="amalthea-sample-code" placeholder="用户可查看的代码，可以允许被修改并提交运行。"></textarea>
+									<div><label class="field-label" for="amalthea-title" class="fw">Code Title</label></div>
+									<textarea class="FormInput" rows="1" name="amalthea-title" id="amalthea-title" placeholder="The basic information of the code"></textarea>
+									<label class="field-label" for="amalthea-pre-exercise-code" class="fw">Pre-execute Code</label>
+									<textarea class="FormInput" rows="3" name="amalthea-pre-exercise-code" id="amalthea-pre-exercise-code" placeholder="Executed before main code, hidden from readers"></textarea>
+									<label class="field-label" for="amalthea-sample-code" class="fw">Main Code</label>
+									<textarea class="FormInput" rows="5" name="amalthea-sample-code" id="amalthea-sample-code" placeholder="The code readers could see, execute or modify"></textarea>
 									<div class="onlyforrun">
-										<label class="field-label" for="amalthea-solution">正确答案</label>
-										<textarea class="FormInput" rows="3" name="amalthea-solution" id="amalthea-solution" placeholder="练习题目的正确答案，请保持程序格式规整美观。"></textarea>
-										<label class="field-label" for="amalthea-sct">程序验证过程</label>
-										<textarea class="FormInput" rows="3" name="amalthea-sct" id="amalthea-sct" placeholder="用户提交代码的正确性评判过程，必须是一段返回Boolean值的代码（不允许打印任何内容），返回值为true表示测试通过。"></textarea>
-										<label for="amalthea-sct-method0"><input type="radio" name="amalthea-sct-method" id="amalthea-sct-method0" value="method0" checked><span>验证程序功能</span></label>
-										<label for="amalthea-sct-method1"><input type="radio" name="amalthea-sct-method" id="amalthea-sct-method1" value="method1"><span>验证程序输出</span></label>
-										<div><label class="field-label" for="amalthea-hint">提示信息</label></div>
-										<textarea class="FormInput" rows="2" name="amalthea-hint" id="amalthea-hint" placeholder="简单的文字提示，帮助用户完成练习题目。"></textarea>
+										<label class="field-label" for="amalthea-solution">Solution</label>
+										<textarea class="FormInput" rows="3" name="amalthea-solution" id="amalthea-solution" placeholder="The correct solution of your problem"></textarea>
+										<label class="field-label" for="amalthea-sct">Submission Check</label>
+										<textarea class="FormInput" rows="3" name="amalthea-sct" id="amalthea-sct" placeholder="A piece of codes that must return a boolean value to check if the submission is correct"></textarea>
+										<label for="amalthea-sct-method0"><input type="radio" name="amalthea-sct-method" id="amalthea-sct-method0" value="method0" checked><span>Check Function</span></label>
+										<label for="amalthea-sct-method1"><input type="radio" name="amalthea-sct-method" id="amalthea-sct-method1" value="method1"><span>Check Output</span></label>
+										<div><label class="field-label" for="amalthea-hint">Hint</label></div>
+										<textarea class="FormInput" rows="2" name="amalthea-hint" id="amalthea-hint" placeholder="Simple text hint to help readers solve your problem"></textarea>
 									</div>
 								</fieldset>
 								<div class="amalthea-wrapper">
@@ -183,9 +183,9 @@
 								</div>
 							</div>
 							<div class="controls">
-								<button type="reset" class="button amalthea-reset float-left">重置表单</button>
-								<button type="submit" class="button amalthea-submit float-right">生成HTML</button>
-								<button class="button amalthea-compile float-right">生成Amalthea</button>
+								<button type="reset" class="button amalthea-reset float-left">Reset Form</button>
+								<button type="submit" class="button amalthea-submit float-right">Generate HTML</button>
+								<button class="button amalthea-compile float-right">Test Amalthea</button>
 							</div>
 						</form>
 					</div>
@@ -289,7 +289,7 @@
 			output += '</div>';
 
 			if (html) {
-				output = '<div data-amalthea-exercise data-lang="html" data-not-executable data-read-only><pre><code data-type="title">请将以下HTML代码粘贴到您的文档中</code></pre><pre><code data-type="sample-code">' + htmlEscape(output) + '</code></pre></div>';
+				output = '<div data-amalthea-exercise data-lang="html" data-not-executable data-read-only><pre><code data-type="title">Paste following text to webpage</code></pre><pre><code data-type="sample-code">' + htmlEscape(output) + '</code></pre></div>';
 				dialog.find(".amalthea-box").html(output);
 			} else {
 				dialog.find(".amalthea-box").html(output);
@@ -356,9 +356,9 @@
 			});
 			$('#amalthea-dialog input[type=radio][name=amalthea-sct-method]').change(function() {
 				if (this.value == 'method0') {
-					$("#amalthea-dialog #amalthea-sct").attr("placeholder", "用户提交代码的正确性评判过程，必须是一段返回Boolean值的功能验证代码（不允许打印任何内容），返回值为true表示测试通过。");
+					$("#amalthea-dialog #amalthea-sct").attr("placeholder", "Must be a piece of codes that could return a boolean value to check if the submission is correct");
 				} else if (this.value == 'method1') {
-					$("#amalthea-dialog #amalthea-sct").attr("placeholder", "用户提交代码的正确性评判过程，必须是一段字符串，程序将自动采集用户编写代码的输出结果与该字符串进行比对，一致则表示测试通过。");
+					$("#amalthea-dialog #amalthea-sct").attr("placeholder", "Must be a text string that is equal to the output of correct code submission");
 				}
 			});
 		}

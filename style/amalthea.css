@@ -253,11 +253,11 @@
 }
 
 .amalthea_message.message_right {
-	background: rgb(100, 220, 100);
+	background: #4caf50;
 }
 
 .amalthea_message.message_wrong {
-	background: rgb(250, 100, 100);
+	background: #F44336;
 }
 
 .amalthea_pretext {

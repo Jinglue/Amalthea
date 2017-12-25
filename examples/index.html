@@ -1,40 +1,38 @@
 <html lang="zh-cmn-Hans">
 
 <head>
-  <title>Amalthea Example</title>
-  <meta charset="utf-8">
-  <link rel="shortcut icon" , href="icons/favicon_large.png" , type="image/png">
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="../style/amalthea.css">
+	<title>Amalthea Example</title>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" , href="icons/favicon_large.png" , type="image/png">
+	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="../style/amalthea_dark.css">
 </head>
 
 <body>
-  <div id="body">
-    <div class="container">
-      <section class="main">
-        <div class="content">
-          <div data-amalthea-exercise data-lang="python2" data-executable>
-            <pre class="code-hidden">
+	<div id="body">
+		<div class="container">
+			<section class="main">
+				<div class="content">
+					<div data-amalthea-exercise data-lang="python2" data-executable>
+						<pre class="code-hidden">
               <div>程序说明</div>
-              <code data-type="title">Python输出42</code>
+              <code data-type="title">Python 2</code>
             </pre>
-            <pre>
+						<pre>
               <div>示例代码</div>
               <code data-type="sample-code">
                 reduce(lambda x, y: x ^ ord(y), 'Life, the universe and everything', 6 * 9)
               </code>
             </pre>
-          </div>
-        </div>
-      </section>
-      <section class="main">
-        <div class="content">
-          <div data-amalthea-exercise data-lang="javascript" data-executable>
-            <pre class="code-hidden">
+					</div>
+				</div>
+				<div class="content">
+					<div data-amalthea-exercise data-lang="javascript" data-executable>
+						<pre class="code-hidden">
               <div>程序说明</div>
-              <code data-type="title">JavaScript输出42</code>
+              <code data-type="title">JavaScript</code>
             </pre>
-            <pre>
+						<pre>
               <div>示例代码</div>
               <code data-type="sample-code">
 function findSequence(goal) {
@@ -51,21 +49,83 @@ function findSequence(goal) {
 }
               </code>
             </pre>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
+					</div>
+				</div>
+				<div class="content">
+					<div data-amalthea-exercise="" data-lang="python" data-executable="">
+						<pre class="code-hidden"><div>程序说明</div><code data-type="title">
+小测试</code></pre>
+						<pre class="code-hidden"><div>预处理代码</div><code data-type="pre-exercise-code">
+from sklearn import svm, metrics
+import numpy as np
 
-  <script src="js/system.js"></script>
-  <script type="text/javascript">
-    SystemJS.import('../dist/amalthea.js').then((root) => {
-      const amalthea = new root.Amalthea({
-        url: 'https://amalthea.jizhi.im:8000',
-        debug: true,
-      });
-    })
-  </script>
+train = np.asarray([[1,2,3,4,5],
+[4,4,0,5,6],
+[4,8,7,7,8],
+[5,0,2,3,0],
+[8,7,6,5,2],
+[3,0,3,8,4],
+[5,7,8,3,6],
+[9,2,0,6,3],
+[6,4,1,8,6],
+[3,2,3,2,8]])
+
+target = np.asarray([1,0,1,0,0,0,1,0,0,1])
+
+test = np.asarray([[3,4,6,5,2],
+[4,1,9,3,4],
+[6,2,4,8,7],
+[4,8,6,5,7],
+[3,8,2,2,4],
+[4,6,5,9,7],
+[3,4,0,7,2],
+[5,9,4,5,4],
+[4,2,7,3,6],
+[3,9,0,1,2]])
+
+expected = np.asarray([0,1,1,1,0,0,0,0,1,0])
+predicted = np.asarray([0])</code></pre>
+						<pre><code data-type="sample-code">
+# 请完成一个基于SVM方法的分类器的构建、训练和预测工作
+# 程序中已预先导入sklearn.svm库，无需再次导入
+# 训练数据train、训练数据分类target、测试数据test也已存在，可直接使用
+# 要求使用数组train和target对分类器进行训练，然后使用数组test进行预测
+# 预测结果请记录为predicted，程序将自动进行评测
+
+# ========= 代码 起 =========
+
+
+
+# ========= 代码 止 =========</code></pre>
+						<pre class="code-hidden"><div>正确答案</div><code data-type="solution">
+clf = svm.SVC(gamma=0.001, C=100.)
+clf.fit(train, target)
+predicted = clf.predict(test)</code></pre>
+						<pre class="code-hidden"><div>程序验证过程</div><code data-type="sct" data-method="0">
+print("分类器预测结果评估:\n%s\n"
+      % (metrics.classification_report(expected, predicted)))
+predicted.shape == (10,)</code></pre>
+						<pre class="code-hidden"><div>提示信息</div><code data-type="hint">
+需要完成三个步骤：
+1.构建svm分类器，添加部分参数
+2.使用训练数据和训练数据的分类属性对分类器进行训练，考虑使用.fit()方法
+3.使用测试数据进行预测工作，考虑使用.predict()方法</code></pre>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<script src="js/system.js"></script>
+	<script type="text/javascript">
+		SystemJS.import('../dist/amalthea.js').then((root) => {
+			const amalthea = new root.Amalthea({
+				url: 'https://amalthea.jizhi.im:8000',
+				debug: true,
+			});
+		})
+
+	</script>
 </body>
 
 </html>

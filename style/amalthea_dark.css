@@ -36,6 +36,8 @@
 
 .amalthea_quiz {
 	padding: .5em;
+	background: #263238;
+	color: #ECEFF1;
 }
 
 .amalthea_quiz_info {
@@ -52,7 +54,7 @@
 }
 
 .amalthea_quiz_option:hover {
-	background-color: #F1F1F1;
+	background-color: #607D8B;
 }
 
 .amalthea_quiz_option.right {
@@ -68,7 +70,7 @@
 	position: relative;
 	display: inline-block;
 	margin: 0 .5em;
-	border: 1px solid #CFD8DC;
+	border: 1px solid transparent;
 	height: 1em;
 	width: 1em;
 	vertical-align: middle;
@@ -123,6 +125,8 @@
 	outline-width: 0;
 	text-align: center;
 	width: 8em;
+	background: transparent;
+	color: #ECEFF1;
 }
 
 .amalthea_quiz_blank:focus {
